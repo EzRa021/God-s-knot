@@ -14,14 +14,19 @@ const navLinks = [
     name: "Department",
     href: "/services",
     submenu: [
-      { name: "Laboratory", href: "/services/laboratory" }, 
+      { name: "Laboratory", href: "/laboratory" }, 
       { name: "Nursing", href: "/nursing" },
-      { name: "Dental`", href: "/dental" },
+      { name: "Dental", href: "/dental" },
+      { name: "Pharmacy", href: "/pharmacy" },
+
     ],
   },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Eatery", href: "/eatery" },
+  { name: "Lodge", href: "/lodge" },
+  
+
 
 ]
 
