@@ -36,34 +36,30 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Hero Section */}
-      <section 
-        className="relative bg-cover bg-center h-[600px] flex items-center"
-        style={{ 
-          backgroundImage: "url('/bg2.jpg')", 
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      >
-        {/* Overlay to improve text readability */}
-        <div className="absolute inset-0 bg-green-700/60" />
-        
-        <div className="container mx-auto px-4 relative z-20">
-          <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Compassionate Care for a Healthier Tomorrow</h1>
-            <p className="text-lg md:text-xl mb-8">
-              At Gods Knot Hospital, we combine cutting-edge medical technology with compassionate care to provide
-              the best healthcare experience for our patients.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-white text-green-800 hover:bg-green-50">
-                Book an Appointment
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                Emergency Services
-              </Button>
-            </div>
-          </motion.div>
+        {/* Hero Section */}
+        <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
+        <div
+          className="relative h-[600px] bg-cover bg-center"
+          style={{ backgroundImage: "url('/bg2.jpg')" }}
+        >
+          <div className="container mx-auto px-4 h-full flex items-center relative z-20">
+            <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Compassionate Care for a Healthier Tomorrow</h1>
+              <p className="text-lg md:text-xl mb-8">
+                At Gods Knot Hospital Limited, we combine cutting-edge medical technology with compassionate care to provide
+                the best healthcare experience for our patients.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-white text-green-800 hover:bg-green-50">
+                  Book an Appointment
+                </Button>
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  Emergency Services
+                </Button>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -196,105 +192,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Quick Access Links */}
-      <section className="bg-green-800 py-16 text-white">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            className="text-3xl font-bold mb-12 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Quick Access
-          </motion.h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <Card className="bg-green-700 border-none h-full">
-                <CardHeader>
-                  <CardTitle className="text-white">Find a Doctor</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-green-100">Search our directory of healthcare professionals.</p>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="secondary" size="sm" className="w-full">
-                    Search Now
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <Card className="bg-green-700 border-none h-full">
-                <CardHeader>
-                  <CardTitle className="text-white">Patient Portal</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-green-100">Access your medical records and test results.</p>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="secondary" size="sm" className="w-full">
-                    Log In
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <Card className="bg-green-700 border-none h-full">
-                <CardHeader>
-                  <CardTitle className="text-white">Virtual Visits</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-green-100">Connect with healthcare providers from home.</p>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="secondary" size="sm" className="w-full">
-                    Schedule Now
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <Card className="bg-green-700 border-none h-full">
-                <CardHeader>
-                  <CardTitle className="text-white">Health Resources</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-green-100">Educational materials and health tips.</p>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="secondary" size="sm" className="w-full">
-                    Learn More
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials Section */}
       <section className="py-20">

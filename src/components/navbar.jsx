@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
@@ -12,22 +12,34 @@ const navLinks = [
   { name: "Home", href: "/" },
   {
     name: "Department",
-    href: "/services",
+    href: "#",
     submenu: [
-      { name: "Laboratory", href: "/laboratory" }, 
-      { name: "Nursing", href: "/nursing" },
-      { name: "Dental", href: "/dental" },
-      { name: "Pharmacy", href: "/pharmacy" },
-
+      { name: "GOSAM Clinic", href: "/gosam-clinic" },
+      {
+        name: "Diagnostics Center",
+        href: "/department/diagnostics",
+        submenu: [
+          { name: "Lab", href: "/laboratory" },
+          { name: "Xray", href: "/xray" },
+        ],
+      },
+      { name: "Dentist", href: "/dental" },
+      { name: "Ambulance", href: "/ambulance" },
+      { name: "Fertility Center", href: "/fertility-center" },
     ],
   },
-  { name: "About", href: "/about" },
+  {
+    name: "Ventures",
+    href: "#",
+    submenu: [
+      { name: "Ruffshall Supermarket", href: "supermarket" },
+      { name: "Eatery", href: "/eatery" },
+      { name: "Lodge", href: "/lodge" },
+      { name: "Conference Center", href: "conference-center" },
+    ],
+  },
   { name: "Contact", href: "/contact" },
-  { name: "Eatery", href: "/eatery" },
-  { name: "Lodge", href: "/lodge" },
-  
-
-
+  { name: "About", href: "/about" },
 ]
 
 export default function Navbar() {
@@ -67,10 +79,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            {/* <div className={cn("font-bold text-2xl transition-colors", scrolled ? "text-green-800" : "text-white")}>
-              <span className="text-green-500">Green</span>Health
-            </div> */}
-            <Image src="/logo.png" alt="logo" width={70} height={70}></Image>
+            <div className={cn("font-bold text-2xl transition-colors", scrolled ? "text-green-800" : "text-white")}>
+              <Image height={50} width={50} src="/logo.png"/>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -101,16 +112,40 @@ export default function Navbar() {
                 )}
 
                 {link.submenu && (
-                  <div className="absolute left-0 mt-2 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="absolute left-0 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                     <div className="py-1">
                       {link.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
-                        >
-                          {subItem.name}
-                        </Link>
+                        <div key={subItem.name} className="relative group/submenu">
+                          {subItem.submenu ? (
+                            <button className="flex items-center justify-between w-full px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">
+                              {subItem.name}
+                              <ChevronRight className="ml-1 h-4 w-4" />
+                            </button>
+                          ) : (
+                            <Link
+                              href={subItem.href}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
+                            >
+                              {subItem.name}
+                            </Link>
+                          )}
+
+                          {subItem.submenu && (
+                            <div className="absolute left-full top-0 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200">
+                              <div className="py-1">
+                                {subItem.submenu.map((subSubItem) => (
+                                  <Link
+                                    key={subSubItem.name}
+                                    href={subSubItem.href}
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
+                                  >
+                                    {subSubItem.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -118,6 +153,8 @@ export default function Navbar() {
               </div>
             ))}
           </nav>
+
+          {/* Theme Toggle */}
 
           {/* CTA Button */}
           <div className="hidden lg:block">
@@ -176,14 +213,54 @@ export default function Navbar() {
                               className="mt-2 ml-4 space-y-2"
                             >
                               {link.submenu.map((subItem) => (
-                                <Link
-                                  key={subItem.name}
-                                  href={subItem.href}
-                                  className="block text-gray-600 hover:text-green-700"
-                                  onClick={() => setIsOpen(false)}
-                                >
-                                  {subItem.name}
-                                </Link>
+                                <div key={subItem.name}>
+                                  {subItem.submenu ? (
+                                    <>
+                                      <button
+                                        className="flex items-center justify-between w-full text-gray-600 hover:text-green-700"
+                                        onClick={() => toggleSubmenu(subItem.name)}
+                                      >
+                                        {subItem.name}
+                                        <ChevronDown
+                                          className={cn(
+                                            "h-4 w-4 transition-transform",
+                                            openSubmenu === subItem.name ? "rotate-180" : "",
+                                          )}
+                                        />
+                                      </button>
+
+                                      <AnimatePresence>
+                                        {openSubmenu === subItem.name && (
+                                          <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: "auto" }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            className="mt-2 ml-4 space-y-2"
+                                          >
+                                            {subItem.submenu.map((subSubItem) => (
+                                              <Link
+                                                key={subSubItem.name}
+                                                href={subSubItem.href}
+                                                className="block text-gray-500 hover:text-green-700"
+                                                onClick={() => setIsOpen(false)}
+                                              >
+                                                {subSubItem.name}
+                                              </Link>
+                                            ))}
+                                          </motion.div>
+                                        )}
+                                      </AnimatePresence>
+                                    </>
+                                  ) : (
+                                    <Link
+                                      href={subItem.href}
+                                      className="block text-gray-600 hover:text-green-700"
+                                      onClick={() => setIsOpen(false)}
+                                    >
+                                      {subItem.name}
+                                    </Link>
+                                  )}
+                                </div>
                               ))}
                             </motion.div>
                           )}
@@ -201,6 +278,8 @@ export default function Navbar() {
                   </div>
                 ))}
 
+                {/* Theme Toggle */}
+
                 <Button className="bg-green-600 hover:bg-green-700 w-full mt-4">Book Appointment</Button>
               </nav>
             </div>
@@ -210,4 +289,3 @@ export default function Navbar() {
     </header>
   )
 }
-

@@ -147,7 +147,7 @@ export default function PharmacyPage() {
                 Comprehensive Pharmacy Services
               </h2>
               <p className="text-gray-700 mb-6">
-                The God's Knot Hospital Pharmacy provides comprehensive pharmaceutical services for inpatients,
+                The God's Knot Hospital Limited  Pharmacy provides comprehensive pharmaceutical services for inpatients,
                 outpatients, and the community. Our team of experienced pharmacists and technicians are committed to
                 ensuring safe and effective medication therapy for all patients.
               </p>

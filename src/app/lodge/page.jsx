@@ -68,7 +68,7 @@ export default function LodgePage() {
       capacity: "1-2 guests",
       size: "250 sq ft",
       beds: "1 Queen Bed",
-      image: "/placeholder.svg?height=300&width=500",
+      image: "/IMG_0635.jpg",
       amenities: ["Free Wi-Fi", "TV", "Private Bathroom", "Air Conditioning", "Daily Housekeeping"],
     },
     {
@@ -79,7 +79,7 @@ export default function LodgePage() {
       capacity: "1-3 guests",
       size: "350 sq ft",
       beds: "1 King Bed or 2 Queen Beds",
-      image: "/placeholder.svg?height=300&width=500",
+      image: "/IMG_0636.jpg",
       amenities: [
         "Free Wi-Fi",
         "TV",
@@ -89,28 +89,6 @@ export default function LodgePage() {
         "Mini Fridge",
         "Coffee Maker",
         "Work Desk",
-      ],
-    },
-    {
-      id: "suite",
-      name: "Family Suite",
-      description: "Expansive suite with separate living area, ideal for families.",
-      price: 179,
-      capacity: "1-4 guests",
-      size: "500 sq ft",
-      beds: "1 King Bed and 1 Sofa Bed",
-      image: "/placeholder.svg?height=300&width=500",
-      amenities: [
-        "Free Wi-Fi",
-        "TV",
-        "Private Bathroom",
-        "Air Conditioning",
-        "Daily Housekeeping",
-        "Mini Fridge",
-        "Coffee Maker",
-        "Work Desk",
-        "Separate Living Area",
-        "Microwave",
       ],
     },
   ]
@@ -202,7 +180,7 @@ export default function LodgePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/lodge-hero.jpg')" }}
+          style={{ backgroundImage: "url('/IMG_0636.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
@@ -210,61 +188,6 @@ export default function LodgePage() {
               <p className="text-lg md:text-xl">
                 Comfortable accommodations for patients and families, conveniently located on the hospital campus.
               </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Info Section */}
-      <section className="py-8 bg-green-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <MapPin className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Location</h3>
-                <p className="text-gray-700">123 Health Avenue, East Wing</p>
-                <p className="text-gray-700">Connected to Main Hospital Building</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Clock className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Reception Hours</h3>
-                <p className="text-gray-700">24/7 Front Desk Service</p>
-                <p className="text-gray-700">Check-in: 3pm | Check-out: 11am</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Phone className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Contact</h3>
-                <p className="text-gray-700">Reservations: (123) 456-7890</p>
-                <p className="text-gray-700">Email: lodge@God's Knot.com</p>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -359,7 +282,7 @@ export default function LodgePage() {
           >
             <h2 className="text-3xl font-bold text-green-900 mb-4">Accommodations</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Choose from a variety of room types designed to meet your needs during your stay at God's Knot Hospital.
+              Choose from a variety of room types designed to meet your needs during your stay at God's Knot Hospital Limited  .
             </p>
           </motion.div>
 
@@ -367,7 +290,6 @@ export default function LodgePage() {
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-12">
               <TabsTrigger value="standard">Standard</TabsTrigger>
               <TabsTrigger value="deluxe">Deluxe</TabsTrigger>
-              <TabsTrigger value="suite">Family Suite</TabsTrigger>
             </TabsList>
 
             {roomTypes.map((room) => (
@@ -378,8 +300,8 @@ export default function LodgePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="relative h-[300px] rounded-lg overflow-hidden shadow-md">
-                    <Image src={room.image || "/lodge2.jpg"} alt={room.name} fill className="object-cover" />
+                  <div className="relative h-full rounded-lg overflow-hidden shadow-md">
+                    <Image src={room.image || "/lodge2.jpg"} alt={room.name} fill className="object-contain" />
                   </div>
 
                   <div>
@@ -388,10 +310,7 @@ export default function LodgePage() {
                         <h3 className="text-2xl font-bold text-green-800">{room.name}</h3>
                         <p className="text-gray-600">{room.description}</p>
                       </div>
-                      <div className="text-right">
-                        <div className="text-2xl font-bold text-green-700">${room.price}</div>
-                        <div className="text-sm text-gray-500">per night</div>
-                      </div>
+                      
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 mb-6">

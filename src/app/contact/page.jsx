@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -34,6 +34,261 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+// Google Maps component with user location
+const GoogleMap = () => {
+  // Loading script dynamically
+  useEffect(() => {
+    // Create the script element for Google Maps API
+    const googleMapScript = document.createElement("script");
+    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBibWWEASRhywJHZEtYmi3C1U9c573iMhw&callback=initMap`;
+    googleMapScript.async = true;
+    googleMapScript.defer = true;
+    
+    // Define the callback function
+    window.initMap = function() {
+      // Hospital location coordinates from the provided Google Maps link
+      const hospitalLocation = { lat: 7.4655616, lng: 3.8364637 }; // Exact coordinates for God's Knot Hospital Limited  Limited 
+      
+      // Create the map centered at the hospital location
+      const map = new google.maps.Map(document.getElementById("google-map"), {
+        center: hospitalLocation,
+        zoom: 15,
+        mapTypeControl: true,
+        fullscreenControl: true,
+        streetViewControl: true,
+        zoomControl: true,
+      });
+      
+      // Add marker for hospital location
+      const hospitalMarker = new google.maps.Marker({
+        position: hospitalLocation,
+        map: map,
+        title: "God's Knot Hospital Limited ",
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 10,
+          fillColor: "#4ade80", // Green color
+          fillOpacity: 0.7,
+          strokeWeight: 2,
+          strokeColor: "#166534", // Dark green border
+        }
+      });
+
+      // Add info window for hospital marker
+      const hospitalInfoWindow = new google.maps.InfoWindow({
+        content: `
+          <div style="padding: 8px; max-width: 200px;">
+            <h3 style="margin: 0 0 8px 0; color: #166534; font-weight: bold;">God's Knot Hospital Limited </h3>
+            <p style="margin: 0; font-size: 14px;">Opposite NIPCO Filling Station, Off Ido/Eruwa Road, lyana Ekerin, Ologuneru, Ibadan</p>
+            <p style="margin: 8px 0 0 0;">
+              <a href="https://maps.app.goo.gl/qtBrSWofvV5xKso58" target="_blank" style="color: #166534; text-decoration: none; font-weight: bold;">Get Directions</a>
+            </p>
+          </div>
+        `
+      });
+
+      // Show info window when clicking on hospital marker
+      hospitalMarker.addListener("click", () => {
+        hospitalInfoWindow.open(map, hospitalMarker);
+      });
+      
+      // Create a status message div for user location
+      const statusDiv = document.createElement("div");
+      statusDiv.id = "location-status";
+      statusDiv.style.position = "absolute";
+      statusDiv.style.bottom = "10px";
+      statusDiv.style.left = "10px";
+      statusDiv.style.backgroundColor = "white";
+      statusDiv.style.padding = "5px 10px";
+      statusDiv.style.borderRadius = "4px";
+      statusDiv.style.boxShadow = "0 2px 4px rgba(0,0,0,0.2)";
+      statusDiv.style.fontSize = "14px";
+      statusDiv.style.zIndex = "5";
+      statusDiv.style.display = "none";
+      document.getElementById("google-map").appendChild(statusDiv);
+      
+      // Add user location button
+      const locationButton = document.createElement("button");
+      locationButton.textContent = "Show My Location";
+      locationButton.style.backgroundColor = "#166534";
+      locationButton.style.color = "white";
+      locationButton.style.border = "none";
+      locationButton.style.borderRadius = "4px";
+      locationButton.style.padding = "10px 16px";
+      locationButton.style.margin = "10px";
+      locationButton.style.cursor = "pointer";
+      locationButton.style.fontWeight = "bold";
+      locationButton.style.boxShadow = "0 2px 4px rgba(0,0,0,0.2)";
+      
+      map.controls[google.maps.ControlPosition.TOP_RIGHT].push(locationButton);
+      
+      // Initialize user location marker
+      let userMarker = null;
+      let userInfoWindow = null;
+      
+      // Function to handle location errors
+      function handleLocationError(error) {
+        statusDiv.style.display = "block";
+        switch(error.code) {
+          case error.PERMISSION_DENIED:
+            statusDiv.textContent = "Location permission denied. Please enable location services.";
+            statusDiv.style.backgroundColor = "#fee2e2";
+            statusDiv.style.color = "#b91c1c";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            statusDiv.textContent = "Location information is unavailable.";
+            statusDiv.style.backgroundColor = "#fee2e2";
+            statusDiv.style.color = "#b91c1c";
+            break;
+          case error.TIMEOUT:
+            statusDiv.textContent = "Location request timed out.";
+            statusDiv.style.backgroundColor = "#fee2e2";
+            statusDiv.style.color = "#b91c1c";
+            break;
+          default:
+            statusDiv.textContent = "An unknown error occurred.";
+            statusDiv.style.backgroundColor = "#fee2e2";
+            statusDiv.style.color = "#b91c1c";
+            break;
+        }
+        
+        // Hide status after 5 seconds
+        setTimeout(() => {
+          statusDiv.style.display = "none";
+        }, 5000);
+      }
+      
+      // Function to handle getting user location
+      function getUserLocation() {
+        statusDiv.style.display = "block";
+        statusDiv.textContent = "Getting your location...";
+        statusDiv.style.backgroundColor = "#ecfdf5";
+        statusDiv.style.color = "#065f46";
+        
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const userLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              
+              // Add or update user marker
+              if (userMarker) {
+                userMarker.setPosition(userLocation);
+              } else {
+                userMarker = new google.maps.Marker({
+                  position: userLocation,
+                  map: map,
+                  title: "Your Location",
+                  animation: google.maps.Animation.DROP,
+                  icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 8,
+                    fillColor: "#3b82f6", // Blue color
+                    fillOpacity: 0.8,
+                    strokeWeight: 2,
+                    strokeColor: "#1e40af", // Dark blue border
+                  }
+                });
+                
+                // Create info window for user location
+                userInfoWindow = new google.maps.InfoWindow({
+                  content: `<div style="padding: 5px; text-align: center;"><b>Your Location</b></div>`
+                });
+                
+                // Show info window when clicking on user marker
+                userMarker.addListener("click", () => {
+                  userInfoWindow.open(map, userMarker);
+                });
+              }
+              
+              // Calculate the bounds to include both hospital and user location
+              const bounds = new google.maps.LatLngBounds();
+              bounds.extend(hospitalLocation);
+              bounds.extend(userLocation);
+              
+              // Fit the map to these bounds
+              map.fitBounds(bounds);
+              
+              // Calculate distance between user and hospital (in kilometers)
+              const distanceInKm = google.maps.geometry.spherical.computeDistanceBetween(
+                new google.maps.LatLng(userLocation),
+                new google.maps.LatLng(hospitalLocation)
+              ) / 1000; // Convert meters to kilometers
+              
+              // Update status message with distance
+              statusDiv.textContent = `You are approximately ${distanceInKm.toFixed(2)} km from the hospital`;
+              statusDiv.style.backgroundColor = "#ecfdf5";
+              statusDiv.style.color = "#065f46";
+              
+              // Hide status after 10 seconds
+              setTimeout(() => {
+                statusDiv.style.display = "none";
+              }, 10000);
+              
+              // Draw a line between user location and hospital
+              const pathCoordinates = [
+                userLocation,
+                hospitalLocation
+              ];
+              
+              const path = new google.maps.Polyline({
+                path: pathCoordinates,
+                geodesic: true,
+                strokeColor: "#4ade80",
+                strokeOpacity: 0.7,
+                strokeWeight: 3
+              });
+              
+              path.setMap(map);
+            },
+            (error) => {
+              handleLocationError(error);
+            },
+            {
+              enableHighAccuracy: true,
+              timeout: 10000,
+              maximumAge: 0
+            }
+          );
+        } else {
+          statusDiv.textContent = "Geolocation is not supported by this browser.";
+          statusDiv.style.backgroundColor = "#fee2e2";
+          statusDiv.style.color = "#b91c1c";
+          
+          // Hide status after 5 seconds
+          setTimeout(() => {
+            statusDiv.style.display = "none";
+          }, 5000);
+        }
+      }
+      
+      // Add click event listener to location button
+      locationButton.addEventListener("click", getUserLocation);
+    };
+    
+    document.head.appendChild(googleMapScript);
+    
+    // Add geometry library for distance calculation
+    const geometryScript = document.createElement("script");
+    geometryScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBibWWEASRhywJHZEtYmi3C1U9c573iMhw&libraries=geometry";
+    document.head.appendChild(geometryScript);
+    
+    // Cleanup function
+    return () => {
+      document.head.removeChild(googleMapScript);
+      if (document.head.contains(geometryScript)) {
+        document.head.removeChild(geometryScript);
+      }
+      window.initMap = null;
+    };
+  }, []);
+
+  return (
+    <div id="google-map" className="rounded-lg overflow-hidden shadow-lg h-[400px] w-full relative"></div>
+  );
+};
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState("idle");
@@ -108,7 +363,7 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[300px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/contact-hero.jpg')" }}
+          style={{ backgroundImage: "url('/DSC_2907.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div
@@ -160,8 +415,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-green-800 mb-1">Email</h3>
-                <p className="text-gray-700">info@God's Knot.com</p>
-                <p className="text-gray-700">appointments@God's Knot.com</p>
+                <p className="text-gray-700">info@godsknot.com</p>
+                <p className="text-gray-700">appointments@godsknot.com</p>
               </div>
             </motion.div>
 
@@ -177,10 +432,6 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-semibold text-green-800 mb-1">Hours</h3>
                 <p className="text-gray-700">Emergency: 24/7</p>
-                <p className="text-gray-700">
-                  Regular Services: Mon-Fri 8am-8pm
-                </p>
-                <p className="text-gray-700">Weekend Services: 9am-5pm</p>
               </div>
             </motion.div>
           </div>
@@ -272,7 +523,7 @@ export default function ContactPage() {
                       className="border-green-200"
                     />
                   </div>
-                  ow
+                  
                   <div className="space-y-2">
                     <Label htmlFor="department">Department</Label>
                     <Select
@@ -342,14 +593,9 @@ export default function ContactPage() {
               transition={{ duration: 0.6 }}
             >
               <div className="space-y-8">
-                {/* Map */}
-                <div className="rounded-lg overflow-hidden shadow-lg h-[300px] bg-gray-200 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <MapPin className="h-12 w-12 text-green-600 mx-auto mb-4" />
-                    <p className="text-gray-600">
-                      Interactive map would be displayed here
-                    </p>
-                  </div>
+                {/* Google Map */}
+                <div className="rounded-lg overflow-hidden shadow-lg">
+                  <GoogleMap />
                 </div>
 
                 {/* Location */}
@@ -362,7 +608,7 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700 mb-2">
-                      <strong>God's Knot Hospital</strong>
+                      <strong>God's Knot Hospital Limited </strong>
                       <br />
                       Opposite NIPCO Filling Station, Off Ido/Eruwa Road
                       <br />
@@ -375,259 +621,27 @@ export default function ContactPage() {
                       access to public transportation and ample parking
                       facilities.
                     </p>
-                  </CardContent>
-                </Card>
-
-                {/* Department Contacts */}
-                <Card className="border-green-100">
-                  <CardHeader>
-                    <CardTitle className="text-green-800 flex items-center">
-                      <Building className="h-5 w-5 mr-2" />
-                      Department Contacts
-                    </CardTitle>
-                    <CardDescription>
-                      Direct contact information for our departments
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Tabs defaultValue="medical">
-                      <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="medical">Medical</TabsTrigger>
-                        <TabsTrigger value="administrative">
-                          Administrative
-                        </TabsTrigger>
-                      </TabsList>
-
-                      <TabsContent value="medical" className="space-y-4 mt-4">
-                        <div className="border-b border-gray-200 pb-2">
-                          <h4 className="font-semibold text-green-700">
-                            Cardiology
-                          </h4>
-                          <p className="text-gray-600">Phone: (123) 456-7891</p>
-                          <p className="text-gray-600">
-                            Email: cardiology@God's Knot.com
-                          </p>
-                        </div>
-
-                        <div className="border-b border-gray-200 pb-2">
-                          <h4 className="font-semibold text-green-700">
-                            Neurology
-                          </h4>
-                          <p className="text-gray-600">Phone: (123) 456-7892</p>
-                          <p className="text-gray-600">
-                            Email: neurology@God's Knot.com
-                          </p>
-                        </div>
-
-                        <div className="border-b border-gray-200 pb-2">
-                          <h4 className="font-semibold text-green-700">
-                            Pediatrics
-                          </h4>
-                          <p className="text-gray-600">Phone: (123) 456-7893</p>
-                          <p className="text-gray-600">
-                            Email: pediatrics@God's Knot.com
-                          </p>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-green-700">
-                            Orthopedics
-                          </h4>
-                          <p className="text-gray-600">Phone: (123) 456-7894</p>
-                          <p className="text-gray-600">
-                            Email: orthopedics@God's Knot.com
-                          </p>
-                        </div>
-                      </TabsContent>
-
-                      <TabsContent
-                        value="administrative"
-                        className="space-y-4 mt-4"
+                    <p className="text-gray-600 mt-2">
+                      <a 
+                        href="https://maps.app.goo.gl/qtBrSWofvV5xKso58" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-green-600 hover:text-green-800 font-medium flex items-center"
                       >
-                        <div className="border-b border-gray-200 pb-2">
-                          <h4 className="font-semibold text-green-700">
-                            Appointments
-                          </h4>
-                          <p className="text-gray-600">Phone: (123) 456-7895</p>
-                          <p className="text-gray-600">
-                            Email: appointments@God's Knot.com
-                          </p>
-                        </div>
-
-                        <div className="border-b border-gray-200 pb-2">
-                          <h4 className="font-semibold text-green-700">
-                            Billing & Insurance
-                          </h4>
-                          <p className="text-gray-600">Phone: (123) 456-7896</p>
-                          <p className="text-gray-600">
-                            Email: billing@God's Knot.com
-                          </p>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-green-700">
-                            Administration
-                          </h4>
-                          <p className="text-gray-600">Phone: (123) 456-7897</p>
-                          <p className="text-gray-600">
-                            Email: admin@God's Knot.com
-                          </p>
-                        </div>
-                      </TabsContent>
-                    </Tabs>
+                        <MapPin className="h-4 w-4 mr-1" /> Get Directions
+                      </a>
+                    </p>
                   </CardContent>
                 </Card>
+
+               
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Visiting Information */}
-      <section className="py-16 bg-green-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">
-              Visiting Information
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Important information for patients and visitors to ensure a smooth
-              and comfortable experience.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <Card className="border-green-100 h-full">
-                <CardHeader>
-                  <CardTitle className="text-green-800">
-                    Visiting Hours
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 text-gray-700">
-                    <li className="flex justify-between">
-                      <span>General Wards:</span>
-                      <span>10:00 AM - 8:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Intensive Care Units:</span>
-                      <span>12:00 PM - 2:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span></span>
-                      <span>6:00 PM - 7:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Maternity Ward:</span>
-                      <span>10:00 AM - 12:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span></span>
-                      <span>3:00 PM - 8:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Pediatric Ward:</span>
-                      <span>10:00 AM - 8:00 PM</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Emergency Department:</span>
-                      <span>24/7 (limited to 1 visitor)</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <Card className="border-green-100 h-full">
-                <CardHeader>
-                  <CardTitle className="text-green-800">
-                    Parking Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 text-gray-700">
-                  <p>
-                    <strong>Main Parking Garage:</strong>
-                    <br />
-                    Located adjacent to the main entrance. Open 24/7.
-                  </p>
-                  <p>
-                    <strong>Rates:</strong>
-                    <br />
-                    First hour: Free
-                    <br />
-                    1-3 hours: $5
-                    <br />
-                    3-6 hours: $10
-                    <br />
-                    6-24 hours: $15
-                  </p>
-                  <p>
-                    <strong>Visitor Passes:</strong>
-                    <br />
-                    Weekly passes available at the information desk for $40.
-                  </p>
-                  <p>
-                    <strong>Accessible Parking:</strong>
-                    <br />
-                    Available near all entrances for patients and visitors with
-                    disabilities.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              <Card className="border-green-100 h-full">
-                <CardHeader>
-                  <CardTitle className="text-green-800">
-                    Visitor Guidelines
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3 text-gray-700">
-                  <p>
-                    For the comfort and safety of our patients, please observe
-                    the following guidelines:
-                  </p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Limit of 2 visitors per patient at any time</li>
-                    <li>Children under 12 must be accompanied by an adult</li>
-                    <li>
-                      Please do not visit if you have cold or flu symptoms
-                    </li>
-                    <li>Maintain quiet in patient areas</li>
-                    <li>Turn mobile phones to silent mode</li>
-                    <li>Respect patient privacy and confidentiality</li>
-                    <li>Follow all instructions from hospital staff</li>
-                    <li>Some units may have additional restrictions</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      
 
       <Footer />
     </div>

@@ -61,7 +61,7 @@ export default function DentistryPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/dentistry-hero.jpg')" }}
+          style={{ backgroundImage: "url('/dental1.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
@@ -74,61 +74,7 @@ export default function DentistryPage() {
         </div>
       </section>
 
-      {/* Quick Info Section */}
-      <section className="py-8 bg-green-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Clock className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Hours</h3>
-                <p className="text-gray-700">Monday - Friday: 8am - 6pm</p>
-                <p className="text-gray-700">Saturday: 9am - 2pm</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Calendar className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Appointments</h3>
-                <p className="text-gray-700">Easy online scheduling</p>
-                <p className="text-gray-700">Same-day emergency appointments available</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Phone className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Contact</h3>
-                <p className="text-gray-700">Dental Office: (123) 456-7890</p>
-                <p className="text-gray-700">Emergency: 1-800-DENTAL-HELP</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
+  \
       {/* Dental Care Overview */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -184,15 +130,11 @@ export default function DentistryPage() {
                   </div>
                 </div>
               </div>
-
-              <Button className="bg-green-600 hover:bg-green-700">
-                Schedule a Dental Appointment
-              </Button>
             </motion.div>
 
             <motion.div variants={fadeIn} className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="/dental1.jpg"
                 alt="Modern dental treatment room"
                 fill
                 className="object-cover"
@@ -247,14 +189,7 @@ export default function DentistryPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <Link href="/dentistry/services">
-              <Button
-                variant="outline"
-                className="border-green-600 text-green-700 hover:bg-green-50"
-              >
-                View All Dental Services
-              </Button>
-            </Link>
+            
           </motion.div>
         </div>
       </section>

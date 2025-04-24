@@ -21,7 +21,7 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4">God's Knot Hospital</h3>
             <p className="text-green-100 mb-6">
               Providing compassionate, high-quality healthcare services to our
-              community for over 25 years.
+              community for over {new Date().getFullYear() - 2014} years.
             </p>
             <div className="flex space-x-4">
               <a
@@ -69,23 +69,16 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services"
+                  href="/"
                   className="text-green-100 hover:text-white transition-colors"
                 >
                   Our Services
                 </Link>
               </li>
+              
               <li>
                 <Link
-                  href="/doctors"
-                  className="text-green-100 hover:text-white transition-colors"
-                >
-                  Our Doctors
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/careers"
+                  href="/"
                   className="text-green-100 hover:text-white transition-colors"
                 >
                   Careers
@@ -93,7 +86,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/news"
+                  href="/"
                   className="text-green-100 hover:text-white transition-colors"
                 >
                   News & Events
@@ -149,26 +142,6 @@ export default function Footer() {
             © {new Date().getFullYear()} God's Knot Hospital. All rights
             reserved.
           </p>
-          <div className="mt-2 space-x-4 text-sm">
-            <Link
-              href="/privacy"
-              className="text-green-300 hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-green-300 hover:text-white transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/accessibility"
-              className="text-green-300 hover:text-white transition-colors"
-            >
-              Accessibility
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

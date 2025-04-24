@@ -30,64 +30,64 @@ export default function AboutPage() {
 
   const leadershipTeam = [
     {
-      name: "Dr. Emily Chen",
-      role: "Chief Executive Officer",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Dr. Chen has over 20 years of experience in healthcare management and is dedicated to providing exceptional patient care.",
+      name: "Dr. Emmanuel I. Olowokere",
+      role: "Founder & Medical Director",
+      image: "/md.jpg",
+      bio: "MBChB, FWACS, FWACOG. Founded God's Knot Hospital Limited in 2014 with a vision to provide exceptional healthcare to all.",
     },
     {
-      name: "Dr. Michael Rodriguez",
-      role: "Chief Medical Officer",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Dr. Rodriguez oversees all medical operations and ensures that our hospital maintains the highest standards of care.",
+      name: "Mrs. Rofiat Olowokere",
+      role: "Hospital Administrator",
+      image: "/raf.jpg",
+      bio: "An epitome of diligence, prudence, sacrifice and dedication. Her unflinching support has been crucial to the hospital's development.",
     },
     {
-      name: "Sarah Johnson",
-      role: "Chief Nursing Officer",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "With a passion for patient-centered care, Sarah leads our nursing staff to provide compassionate and effective healthcare.",
+      name: "Prof. Ojengbede",
+      role: "Chairman, Board of Advisers",
+      image: "/prof.jpg",
+      bio: "Director, Centre for Population and Reproductive Health. Provides mentorship and leadership to the hospital.",
     },
     {
-      name: "David Thompson",
-      role: "Chief Financial Officer",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "David ensures the financial health of our hospital while maintaining our commitment to accessible healthcare for all.",
+      name: "Dr. Olumide Gbala",
+      role: "Guest Lecturer",
+      image: "/olu.jpg",
+      bio: "CMD, UNIMEDTH, Ondo. A long-time mentor to the founder and contributor to the hospital's growth.",
     },
   ]
 
   const milestones = [
     {
-      year: "1998",
-      title: "Foundation",
+      title: "Early Beginnings",
       description:
-        "God's Knot Hospital was founded with a mission to provide accessible, high-quality healthcare to the community.",
+        "Dr. Emmanuel Idowu Olowokere's journey in healthcare began with his education and early medical practice.",
     },
     {
-      year: "2005",
-      title: "Expansion",
+      year: "2003",
+      title: "Haske Medical Centre",
       description:
-        "Major expansion of facilities, adding a new wing with specialized departments and advanced technology.",
+        "Established Haske Medical Centre in Barkin Ladi during NYSC, which later relocated back to the South in 2004.",
     },
     {
-      year: "2010",
-      title: "Research Center",
+      year: "2008-2014",
+      title: "Medical Specialization",
+      description: "Completed residency in Obstetrics & Gynaecology at University College Hospital (UCH), Ibadan.",
+    },
+    {
+      year: "June 6, 2014",
+      title: "God's Knot Hospital Limited Founded",
       description:
-        "Establishment of our medical research center, focusing on innovative treatments and medical advancements.",
+        "God's Knot Hospital Limited was inaugurated to commemorate the founder's father, built with dedication and sacrifice.",
     },
     {
-      year: "2015",
-      title: "Community Programs",
-      description: "Launch of extensive community health programs, providing preventive care and health education.",
-    },
-    {
-      year: "2020",
-      title: "Technological Innovation",
-      description: "Implementation of state-of-the-art medical technology and digital health solutions.",
+      year: "2018",
+      title: "Expansion of Services",
+      description: "Established the Fertility Centre, which has since become one of the leading centers in Ibadan.",
     },
     {
       year: "2023",
-      title: "Excellence Recognition",
-      description: "Received national recognition for excellence in patient care and medical innovation.",
+      title: "Corporate Status",
+      description:
+        "Became incorporated as a limited liability company: God's Knot Hospital Limited Limited (with CAC registration number 6938311).",
     },
   ]
 
@@ -123,13 +123,13 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/about-hero.jpg')" }}
+          style={{ backgroundImage: "url('/DSC_2907.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">About God's Knot Hospital</h1>
               <p className="text-lg md:text-xl">
-                Dedicated to excellence in healthcare, serving our community with compassion and innovation since 1998.
+                Dedicated to excellence in healthcare, serving our community with compassion and innovation since 2014.
               </p>
             </motion.div>
           </div>
@@ -152,16 +152,15 @@ export default function AboutPage() {
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <h3 className="text-xl font-semibold text-green-700 mb-3">Our Mission</h3>
                   <p className="text-gray-700">
-                    To provide exceptional healthcare with compassion and respect, improving the health and wellbeing of
-                    the communities we serve through innovation, collaboration, and a patient-centered approach.
+                    To deliver a high level of care at a relatively cheap and affordable cost.
                   </p>
                 </div>
 
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <h3 className="text-xl font-semibold text-green-700 mb-3">Our Vision</h3>
                   <p className="text-gray-700">
-                    To be the leading healthcare provider known for excellence in patient care, medical innovation, and
-                    community wellness, creating a healthier future for all.
+                    To be an unrivalled private health care provider of repute in Nigeria offering the best standard of
+                    care to all, irrespective of social strata.
                   </p>
                 </div>
 
@@ -191,7 +190,7 @@ export default function AboutPage() {
 
             <motion.div className="relative h-[500px] rounded-lg overflow-hidden shadow-lg" variants={fadeIn}>
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="/DSC_2907.jpg"
                 alt="Medical professionals collaborating"
                 fill
                 className="object-cover"
@@ -251,14 +250,71 @@ export default function AboutPage() {
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <CardDescription className="text-gray-600 text-base">
-                          {milestone.description}
-                        </CardDescription>
+                        <CardDescription className="text-gray-600 text-base">{milestone.description}</CardDescription>
                       </CardContent>
                     </Card>
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Founder's Story */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">Founder's Story</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              The inspiring journey of our founder, Dr. Emmanuel Idowu Olowokere, and how God's Knot Hospital Limited came to
+              be.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="relative h-full rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/md.jpg"
+                alt="Dr. Emmanuel Idowu Olowokere, Founder of God's Knot Hospital"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="space-y-6">
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-green-100">
+                <h3 className="text-xl font-semibold text-green-700 mb-3">The Origin of God's Knot</h3>
+                <p className="text-gray-700">
+                  "God's Knot" came from two sources: MY LIFE and MY WORK! Dr. Olowokere was nicknamed "MR KNIFE" as his
+                  KNOTs were being tied by the supernatural hands. The hospital was inaugurated on June 6, 2014, to
+                  commemorate the demise of the founder's father.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-green-100">
+                <h3 className="text-xl font-semibold text-green-700 mb-3">A Journey of Faith</h3>
+                <p className="text-gray-700">
+                  "We started very small and were thoroughly derided. We were called a 'mushroom' hospital. The
+                  environment was hostile. Some even said we will not last 5 years. We heard that no meaningful thing
+                  survived in the area; but we are like Abraham who flourished in the desert, we stayed glued to
+                  purpose."
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-green-100">
+                <h3 className="text-xl font-semibold text-green-700 mb-3">Building Through Sacrifice</h3>
+                <p className="text-gray-700">
+                  "God's Knot Hospital Limited was built out of rare dedication and sacrifice. After salary payment, almost
+                  everything returned back into the system to procure equipment, purchase land, materials for building
+                  etc. We are daily pushed by the consciousness to ensure that we live our vision and mission
+                  statements."
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -295,9 +351,7 @@ export default function AboutPage() {
                   </div>
                   <CardHeader>
                     <CardTitle className="text-green-800">{leader.name}</CardTitle>
-                    <CardDescription className="text-gray-600 font-medium">
-                      {leader.role}
-                    </CardDescription>
+                    <CardDescription className="text-gray-600 font-medium">{leader.role}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600">{leader.bio}</p>
@@ -318,9 +372,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
-              Excellence & Recognition
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">Excellence & Recognition</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore our state-of-the-art facilities and the recognition we've received for our commitment to
               excellence.
@@ -344,7 +396,7 @@ export default function AboutPage() {
                 <motion.div variants={fadeIn} className="col-span-1 md:col-span-2">
                   <div className="relative h-[400px] rounded-lg overflow-hidden shadow-lg">
                     <Image
-                      src="/placeholder.svg?height=400&width=800"
+                      src="/bg2.jpg"
                       alt="Hospital main building"
                       fill
                       className="object-cover"
@@ -389,7 +441,7 @@ export default function AboutPage() {
                 <motion.div variants={fadeIn}>
                   <div className="relative h-[250px] rounded-lg overflow-hidden shadow-lg">
                     <Image
-                      src="/placeholder.svg?height=250&width=400"
+                      src="/IMG_0589.jpg"
                       alt="Hospital operating room"
                       fill
                       className="object-cover"
@@ -411,7 +463,7 @@ export default function AboutPage() {
                 <motion.div variants={fadeIn}>
                   <div className="relative h-[250px] rounded-lg overflow-hidden shadow-lg">
                     <Image
-                      src="/placeholder.svg?height=250&width=400"
+                      src="/DSC_6083.jpg"
                       alt="Hospital garden"
                       fill
                       className="object-cover"
@@ -430,30 +482,94 @@ export default function AboutPage() {
                 viewport={{ once: true }}
               >
                 <motion.div variants={fadeIn} className="space-y-6">
-                  <h3 className="text-2xl font-bold text-green-800 mb-6">
-                    Recognition for Excellence
-                  </h3>
+                  <h3 className="text-2xl font-bold text-green-800 mb-6">Our Achievements</h3>
 
-                  {awards.map((award) => (
-                    <Card key={award.title} className="border-green-100">
-                      <CardHeader>
-                        <CardTitle className="text-green-700 flex items-center">
-                          <Award className="h-5 w-5 mr-2" />
-                          {award.title}
-                        </CardTitle>
-                        <CardDescription className="text-gray-600">
-                          {award.year} | {award.organization}
-                        </CardDescription>
-                      </CardHeader>
-                    </Card>
-                  ))}
+                  <Card className="border-green-100">
+                    <CardHeader>
+                      <CardTitle className="text-green-700 flex items-center">
+                        <Award className="h-5 w-5 mr-2" />
+                        NHIA Accreditation
+                      </CardTitle>
+                      <CardDescription className="text-gray-600">
+                        Duly accredited by the National Health Insurance Agency
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+
+                  <Card className="border-green-100">
+                    <CardHeader>
+                      <CardTitle className="text-green-700 flex items-center">
+                        <Award className="h-5 w-5 mr-2" />
+                        Fertility Center Excellence
+                      </CardTitle>
+                      <CardDescription className="text-gray-600">
+                        Certified by the Association for Fertility and Reproductive Health in Nigeria
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+
+                  <Card className="border-green-100">
+                    <CardHeader>
+                      <CardTitle className="text-green-700 flex items-center">
+                        <Award className="h-5 w-5 mr-2" />
+                        UCH Partnership
+                      </CardTitle>
+                      <CardDescription className="text-gray-600">
+                        MOU with the University College Hospital for staff surgeries
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+
+                  <Card className="border-green-100">
+                    <CardHeader>
+                      <CardTitle className="text-green-700 flex items-center">
+                        <Award className="h-5 w-5 mr-2" />
+                        Healthcare Network
+                      </CardTitle>
+                      <CardDescription className="text-gray-600">
+                        MOU with about 35 health maintenance organizations
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
                 </motion.div>
 
                 <motion.div variants={fadeIn}>
-                  <div className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
+                  <div className="bg-white p-6 rounded-lg shadow-sm border border-green-100 mb-6">
+                    <h3 className="text-xl font-semibold text-green-700 mb-3">Our Impact in Numbers</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-start">
+                        <span className="bg-green-100 text-green-800 font-semibold px-2 py-1 rounded mr-3">
+                          15,100+
+                        </span>
+                        <span>Registered clients served since inception</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-green-100 text-green-800 font-semibold px-2 py-1 rounded mr-3">2,500+</span>
+                        <span>Successful deliveries performed</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-green-100 text-green-800 font-semibold px-2 py-1 rounded mr-3">3,800+</span>
+                        <span>Major surgeries including laparotomies, C-sections, and orthopedic procedures</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-green-100 text-green-800 font-semibold px-2 py-1 rounded mr-3">2,400+</span>
+                        <span>Minor surgeries performed</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-green-100 text-green-800 font-semibold px-2 py-1 rounded mr-3">64</span>
+                        <span>Babies born from IVF/Surrogacy at our Fertility Centre in the last 3 years</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="bg-green-100 text-green-800 font-semibold px-2 py-1 rounded mr-3">53</span>
+                        <span>Staff members, growing from just 6 at inception</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="relative h-[250px] rounded-lg overflow-hidden shadow-lg">
                     <Image
-                      src="/placeholder.svg?height=500&width=600"
-                      alt="Awards and recognition"
+                      src="/s/hospiimagetal-mission.jpeg"
+                      alt="Hospital achievements"
                       fill
                       className="object-cover"
                     />
@@ -474,9 +590,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">
-              Community Involvement
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">Community Involvement</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We're committed to improving the health and wellbeing of our community through various outreach programs
               and initiatives.
@@ -497,15 +611,13 @@ export default function AboutPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-gray-700">
-                    At God's Knot Hospital, we believe that healthcare extends beyond our walls. We actively engage
-                    with our community through various programs designed to promote health, wellness, and education.
+                    At God's Knot Hospital, we believe that healthcare extends beyond our walls. We actively engage with
+                    our community through various programs designed to promote health, wellness, and education.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                     <div className="bg-green-50 p-4 rounded-lg">
-                      <h4 className="font-semibold text-green-700 mb-2">
-                        Health Education Workshops
-                      </h4>
+                      <h4 className="font-semibold text-green-700 mb-2">Health Education Workshops</h4>
                       <p className="text-gray-600">
                         Free workshops on various health topics, empowering community members with knowledge for better
                         health decisions.
@@ -543,7 +655,7 @@ export default function AboutPage() {
             <motion.div variants={fadeIn}>
               <div className="relative h-[400px] rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src="/placeholder.svg?height=400&width=300"
+                  src="/DSC_2907.jpg"
                   alt="Community health event"
                   fill
                   className="object-cover"
@@ -564,6 +676,110 @@ export default function AboutPage() {
                 </ul>
               </div>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Future Plans */}
+      <section className="py-20 bg-green-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-green-900 mb-4">Our Future Vision</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              God's Knot is not just a single plant. It is purposed to become a plantation. The seed has produced few
+              crops standing.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow-md border border-green-100">
+              <h3 className="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <Building className="h-5 w-5 mr-2" />
+                Expansion Projects
+              </h3>
+              <p className="text-gray-700 mb-4">Currently working on a four-story building that will house:</p>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Pediatric Centre
+                </li>
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Renal Centre
+                </li>
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Intensive Care Unit (ICU)
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow-md border border-green-100">
+              <h3 className="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <Microscope className="h-5 w-5 mr-2" />
+                Advanced Diagnostics
+              </h3>
+              <p className="text-gray-700 mb-4">Plans to enhance our radiodiagnostic capabilities to include:</p>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Computerized Tomography (CT) scan
+                </li>
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Magnetic Resonant Imaging (MRI)
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="bg-white p-6 rounded-lg shadow-md border border-green-100">
+              <h3 className="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <Users className="h-5 w-5 mr-2" />
+                Educational Partnerships
+              </h3>
+              <p className="text-gray-700 mb-4">Aiming to become a Tertiary Institution with:</p>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Collaboration with Post-graduate Medical College
+                </li>
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Training for residents in O&G and other surgical specialties
+                </li>
+                <li className="flex items-center">
+                  <span className="h-2 w-2 rounded-full bg-green-500 mr-2"></span>
+                  Expansion to Isarun with land already acquired
+                </li>
+              </ul>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            className="mt-12 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <blockquote className="italic text-lg text-green-800 max-w-3xl mx-auto">
+              "They look far-fetched but we can achieve them! God's Knot is not my seed. It is God's seed. I was only
+              favoured to be given by God. Hence, the seed (or seeds) and the eventual plantation are purposed to
+              continue even after I am gone!"
+              <footer className="text-base text-gray-600 mt-2">
+                — Dr. Emmanuel I. Olowokere, Founder & Medical Director
+              </footer>
+            </blockquote>
           </motion.div>
         </div>
       </section>

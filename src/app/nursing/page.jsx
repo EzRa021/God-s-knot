@@ -142,7 +142,7 @@ export default function NursingPage() {
             <motion.div variants={fadeIn}>
               <h2 className="text-3xl font-bold text-green-800 mb-6">Our Nursing Philosophy</h2>
               <p className="text-gray-700 mb-6">
-                At God's Knot Hospital, our nursing team is the heart of our patient care. We believe in a holistic
+                At God's Knot Hospital Limited, our nursing team is the heart of our patient care. We believe in a holistic
                 approach that treats the whole person—mind, body, and spirit. Our nurses are committed to providing
                 evidence-based care with compassion and respect for each individual's unique needs.
               </p>

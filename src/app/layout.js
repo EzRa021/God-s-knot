@@ -17,7 +17,7 @@ export default function RootLayout({
       <body >
         {children}
         <WhatsAppFloat
-          phoneNumber="2348130000000"
+          phoneNumber="08132815449"
           welcomeMessage="Hello! How can we assist you with your healthcare needs today?"
         />
       </body>

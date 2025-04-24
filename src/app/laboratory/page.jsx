@@ -168,7 +168,7 @@ export default function LaboratoryPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/lab-hero.jpg')" }}
+          style={{ backgroundImage: "url('/IMG_0589.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
@@ -182,65 +182,6 @@ export default function LaboratoryPage() {
         </div>
       </section>
 
-      {/* Quick Info Section */}
-      <section className="py-8 bg-green-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Clock className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Hours</h3>
-                <p className="text-gray-700">Monday - Friday: 7am - 7pm</p>
-                <p className="text-gray-700">Saturday: 8am - 2pm</p>
-                <p className="text-gray-700">Sunday: Closed (Emergency services available)</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <FileText className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Results</h3>
-                <p className="text-gray-700">Most routine results: Same day</p>
-                <p className="text-gray-700">Specialized tests: 1-7 days</p>
-                <p className="text-gray-700">Results available via patient portal</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Calendar className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Appointments</h3>
-                <p className="text-gray-700">Walk-ins welcome for routine tests</p>
-                <p className="text-gray-700">Appointments recommended for specialized tests</p>
-                <Link href="/appointments" className="text-green-600 hover:underline">
-                  Schedule an appointment
-                </Link>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
       {/* Lab Overview */}
       <section className="py-20">
@@ -335,106 +276,7 @@ export default function LaboratoryPage() {
         </div>
       </section>
 
-      {/* Test Search and Categories */}
-      <section className="py-16 bg-green-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Available Laboratory Tests</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We offer a comprehensive range of diagnostic tests to meet your healthcare needs. Use the search or browse
-              by category to find information about specific tests.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="max-w-md mx-auto mb-12 relative"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <Input
-              type="text"
-              placeholder="Search for a test..."
-              className="pl-10 border-green-200"
-            />
-          </motion.div>
-
-          <Tabs defaultValue={labTests[0].category.toLowerCase().replace(/\s+/g, "-")}>
-            <TabsList className="flex flex-wrap justify-center mb-8">
-              {labTests.map((category) => (
-                <TabsTrigger
-                  key={category.category}
-                  value={category.category.toLowerCase().replace(/\s+/g, "-")}
-                  className="m-1"
-                >
-                  {category.category}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {labTests.map((category) => (
-              <TabsContent key={category.category} value={category.category.toLowerCase().replace(/\s+/g, "-")}>
-                <motion.div
-                  className="bg-white rounded-lg shadow-sm overflow-hidden"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="p-6 border-b border-gray-200">
-                    <h3 className="text-xl font-bold text-green-800 flex items-center">
-                      {category.category === "Blood Tests" && <Vial className="h-5 w-5 mr-2" />}
-                      {category.category === "Urine Tests" && <Beaker className="h-5 w-5 mr-2" />}
-                      {category.category === "Microbiology" && <Microscope className="h-5 w-5 mr-2" />}
-                      {category.category === "Molecular Diagnostics" && <FlaskConical className="h-5 w-5 mr-2" />}
-                      {category.category}
-                    </h3>
-                    <p className="text-gray-600">
-                      {category.tests.length} tests available in this category
-                    </p>
-                  </div>
-
-                  <div className="divide-y divide-gray-200">
-                    {category.tests.map((test, index) => (
-                      <div key={index} className="p-6 hover:bg-gray-50 transition-colors">
-                        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                          <div>
-                            <h4 className="font-semibold text-green-700 mb-1">{test.name}</h4>
-                            <p className="text-gray-600 text-sm">
-                              <span className="font-medium">Preparation:</span> {test.preparation}
-                            </p>
-                          </div>
-                          <div className="mt-2 md:mt-0 flex items-center">
-                            <Badge
-                              variant="outline"
-                              className="border-green-200 text-green-700"
-                            >
-                              Results: {test.turnaround}
-                            </Badge>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="ml-2 text-green-600 hover:text-green-800 p-0"
-                            >
-                              Details
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </div>
-      </section>
-
+    
       {/* Lab Facilities */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -484,7 +326,7 @@ export default function LaboratoryPage() {
               <Card className="border-green-100 h-full">
                 <div className="relative h-48 w-full">
                   <Image
-                    src="/lab2.jpg"
+                    src="/lab3.jpg"
                     alt="Quality control processes"
                     fill
                     className="object-cover rounded-t-lg"
@@ -506,7 +348,7 @@ export default function LaboratoryPage() {
               <Card className="border-green-100 h-full">
                 <div className="relative h-48 w-full">
                   <Image
-                    src="/lab1.jpg"
+                    src="/lab2.jpg"
                     alt="Digital results reporting"
                     fill
                     className="object-cover rounded-t-lg"

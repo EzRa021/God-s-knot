@@ -6,40 +6,15 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
+    "/supermarket/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/supermarket/page.js"
     ],
-    "/nursing/loading": [
+    "/ambulance/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/nursing/loading.js"
-    ],
-    "/nursing/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/nursing/page.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
-    ],
-    "/eatery/loading": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/eatery/loading.js"
-    ],
-    "/eatery/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/eatery/page.js"
+      "static/chunks/app/ambulance/page.js"
     ],
     "/dental/loading": [
       "static/chunks/webpack.js",
@@ -51,15 +26,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/dental/page.js"
     ],
-    "/pharmacy/loading": [
+    "/eatery/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/pharmacy/loading.js"
+      "static/chunks/app/eatery/loading.js"
     ],
-    "/pharmacy/page": [
+    "/eatery/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/pharmacy/page.js"
+      "static/chunks/app/eatery/page.js"
     ],
     "/lodge/loading": [
       "static/chunks/webpack.js",
@@ -71,6 +46,31 @@
       "static/chunks/main-app.js",
       "static/chunks/app/lodge/page.js"
     ],
+    "/conference-center/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/conference-center/page.js"
+    ],
+    "/about/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/about/page.js"
+    ],
+    "/contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/contact/page.js"
+    ],
+    "/fertility-center/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/fertility-center/page.js"
+    ],
+    "/gosam-clinic/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/gosam-clinic/page.js"
+    ],
     "/laboratory/loading": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -80,6 +80,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/laboratory/page.js"
+    ],
+    "/xray/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/xray/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

@@ -20,7 +20,6 @@ import {
 } from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
@@ -197,7 +196,7 @@ export default function DiningPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/dining-hero.jpg')" }}
+          style={{ backgroundImage: "url('/DSC_6087.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
@@ -205,61 +204,6 @@ export default function DiningPage() {
               <p className="text-lg md:text-xl">
                 Nourishing food and relaxing spaces to restore and rejuvenate during your hospital visit.
               </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Info Section */}
-      <section className="py-8 bg-green-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Clock className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Hours</h3>
-                <p className="text-gray-700">Restaurant: 7am - 8pm daily</p>
-                <p className="text-gray-700">Healing Lounge: 6am - 9pm daily</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <MapPin className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Location</h3>
-                <p className="text-gray-700">Restaurant: Main Building, 1st Floor</p>
-                <p className="text-gray-700">Healing Lounge: East Wing, 2nd Floor</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Heart className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Dietary Options</h3>
-                <p className="text-gray-700">Vegetarian, Vegan, Gluten-Free</p>
-                <p className="text-gray-700">Allergen-Friendly Choices Available</p>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -278,7 +222,7 @@ export default function DiningPage() {
               Nourishment for Healing
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              At God's Knot Hospital, we believe that nutritious, delicious food is an essential part of the healing
+              At God's Knot Hospital Limited  , we believe that nutritious, delicious food is an essential part of the healing
               process. Our dining options are designed to provide comfort and nourishment for patients, visitors, and
               staff.
             </p>
@@ -455,13 +399,7 @@ export default function DiningPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-green-600 hover:bg-green-700">View Full Menu</Button>
-                <Button
-                  variant="outline"
-                  className="border-green-600 text-green-700 hover:bg-green-50"
-                >
-                  Special Dietary Requests
-                </Button>
+               
               </div>
             </motion.div>
           </motion.div>
@@ -524,7 +462,6 @@ export default function DiningPage() {
                 </div>
               </div>
 
-              <Button className="bg-green-600 hover:bg-green-700">Request Special Accommodations</Button>
             </motion.div>
 
             <motion.div variants={fadeIn} className="grid grid-cols-2 gap-4">
