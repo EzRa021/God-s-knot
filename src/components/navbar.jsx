@@ -17,7 +17,7 @@ const navLinks = [
       { name: "GOSAM Clinic", href: "/gosam-clinic" },
       {
         name: "Diagnostics Center",
-        href: "/department/diagnostics",
+        href: "#",
         submenu: [
           { name: "Lab", href: "/laboratory" },
           { name: "Xray", href: "/xray" },
@@ -45,7 +45,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [openSubmenu, setOpenSubmenu] = useState(null)
+  const [openMenus, setOpenMenus] = useState({})
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,12 +60,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleSubmenu = (name) => {
-    if (openSubmenu === name) {
-      setOpenSubmenu(null)
-    } else {
-      setOpenSubmenu(name)
+  const toggleSubmenu = (name, event) => {
+    // Prevent event bubbling to parent menus
+    if (event) {
+      event.stopPropagation()
     }
+    
+    setOpenMenus(prev => ({
+      ...prev,
+      [name]: !prev[name]
+    }))
+  }
+
+  // Function to check if a submenu is open
+  const isSubmenuOpen = (name) => {
+    return !!openMenus[name]
   }
 
   return (
@@ -80,7 +89,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <div className={cn("font-bold text-2xl transition-colors", scrolled ? "text-green-800" : "text-white")}>
-              <Image height={50} width={50} src="/logo.png"/>
+              <Image height={50} width={50} src="/logo.png" alt="Logo"/>
             </div>
           </Link>
 
@@ -94,7 +103,7 @@ export default function Navbar() {
                       "flex items-center font-medium transition-colors",
                       scrolled ? "text-gray-700 hover:text-green-700" : "text-white hover:text-green-200",
                     )}
-                    onClick={() => toggleSubmenu(link.name)}
+                    onClick={(e) => toggleSubmenu(link.name, e)}
                   >
                     {link.name}
                     <ChevronDown className="ml-1 h-4 w-4" />
@@ -117,10 +126,25 @@ export default function Navbar() {
                       {link.submenu.map((subItem) => (
                         <div key={subItem.name} className="relative group/submenu">
                           {subItem.submenu ? (
-                            <button className="flex items-center justify-between w-full px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">
+                            <div className="flex items-center justify-between w-full px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700">
                               {subItem.name}
                               <ChevronRight className="ml-1 h-4 w-4" />
-                            </button>
+                              
+                              {/* Nested submenu */}
+                              <div className="absolute left-full top-0 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200">
+                                <div className="py-1">
+                                  {subItem.submenu.map((subSubItem) => (
+                                    <Link
+                                      key={subSubItem.name}
+                                      href={subSubItem.href}
+                                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
+                                    >
+                                      {subSubItem.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
                           ) : (
                             <Link
                               href={subItem.href}
@@ -128,22 +152,6 @@ export default function Navbar() {
                             >
                               {subItem.name}
                             </Link>
-                          )}
-
-                          {subItem.submenu && (
-                            <div className="absolute left-full top-0 w-48 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-200">
-                              <div className="py-1">
-                                {subItem.submenu.map((subSubItem) => (
-                                  <Link
-                                    key={subSubItem.name}
-                                    href={subSubItem.href}
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
-                                  >
-                                    {subSubItem.name}
-                                  </Link>
-                                ))}
-                              </div>
-                            </div>
                           )}
                         </div>
                       ))}
@@ -153,8 +161,6 @@ export default function Navbar() {
               </div>
             ))}
           </nav>
-
-          {/* Theme Toggle */}
 
           {/* CTA Button */}
           <div className="hidden lg:block">
@@ -193,19 +199,19 @@ export default function Navbar() {
                       <>
                         <button
                           className="flex items-center justify-between w-full text-gray-700 hover:text-green-700 font-medium"
-                          onClick={() => toggleSubmenu(link.name)}
+                          onClick={(e) => toggleSubmenu(link.name, e)}
                         >
                           {link.name}
                           <ChevronDown
                             className={cn(
                               "h-4 w-4 transition-transform",
-                              openSubmenu === link.name ? "rotate-180" : "",
+                              isSubmenuOpen(link.name) ? "rotate-180" : "",
                             )}
                           />
                         </button>
 
                         <AnimatePresence>
-                          {openSubmenu === link.name && (
+                          {isSubmenuOpen(link.name) && (
                             <motion.div
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
@@ -218,19 +224,19 @@ export default function Navbar() {
                                     <>
                                       <button
                                         className="flex items-center justify-between w-full text-gray-600 hover:text-green-700"
-                                        onClick={() => toggleSubmenu(subItem.name)}
+                                        onClick={(e) => toggleSubmenu(subItem.name, e)}
                                       >
                                         {subItem.name}
                                         <ChevronDown
                                           className={cn(
                                             "h-4 w-4 transition-transform",
-                                            openSubmenu === subItem.name ? "rotate-180" : "",
+                                            isSubmenuOpen(subItem.name) ? "rotate-180" : "",
                                           )}
                                         />
                                       </button>
 
                                       <AnimatePresence>
-                                        {openSubmenu === subItem.name && (
+                                        {isSubmenuOpen(subItem.name) && (
                                           <motion.div
                                             initial={{ opacity: 0, height: 0 }}
                                             animate={{ opacity: 1, height: "auto" }}
@@ -277,8 +283,6 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-
-                {/* Theme Toggle */}
 
                 <Button className="bg-green-600 hover:bg-green-700 w-full mt-4">Book Appointment</Button>
               </nav>

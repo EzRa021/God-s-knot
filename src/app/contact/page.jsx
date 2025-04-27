@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+
 // Google Maps component with user location
 const GoogleMap = () => {
   // Loading script dynamically
@@ -301,6 +302,16 @@ export default function ContactPage() {
     contactPreference: "email",
   });
 
+  const departments = [
+    { id: "general", name: "General Inquiries" },
+    { id: "appointments", name: "Appointments" },
+    { id: "billing", name: "Billing & Insurance" },
+    { id: "cardiology", name: "Cardiology Department" },
+    { id: "neurology", name: "Neurology Department" },
+    { id: "pediatrics", name: "Pediatrics Department" },
+    { id: "orthopedics", name: "Orthopedics Department" },
+  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -316,23 +327,54 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      if (formData.name && formData.email && formData.message) {
-        setFormStatus("success");
-        // Reset form after success
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          department: "",
-          message: "",
-          contactPreference: "email",
-        });
-      } else {
-        setFormStatus("error");
-      }
-    }, 1000);
+    
+    // Form validation
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormStatus("error");
+      return;
+    }
+    
+    // Format the message for both WhatsApp and email
+    const formattedMessage = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || "Not provided"}
+Department: ${formData.department ? departments.find(d => d.id === formData.department)?.name || formData.department : "Not selected"}
+Message: ${formData.message}
+    `.trim();
+    
+    // Handle based on contact preference
+    if (formData.contactPreference === "phone") {
+      // WhatsApp number - using the first emergency number
+      const whatsappNumber = "08132815449"; // Nigerian format for the first emergency number
+      
+      // Create WhatsApp URL with pre-filled message
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(formattedMessage)}`;
+      
+      // Open WhatsApp in a new tab
+      window.open(whatsappUrl, '_blank');
+    } else {
+      // Email option - use the hospital's email
+      const emailAddress = "godsknothospital@gmail.com";
+      const subject = `Contact Form: ${formData.department ? departments.find(d => d.id === formData.department)?.name : "General Inquiry"}`;
+      
+      // Create mailto URL
+      const mailtoUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(formattedMessage)}`;
+      
+      // Open default email client
+      window.location.href = mailtoUrl;
+    }
+    
+    // Show success message and reset form
+    setFormStatus("success");
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      department: "",
+      message: "",
+      contactPreference: "email",
+    });
   };
 
   const fadeIn = {
@@ -343,16 +385,6 @@ export default function ContactPage() {
       transition: { duration: 0.6 },
     },
   };
-
-  const departments = [
-    { id: "general", name: "General Inquiries" },
-    { id: "appointments", name: "Appointments" },
-    { id: "billing", name: "Billing & Insurance" },
-    { id: "cardiology", name: "Cardiology Department" },
-    { id: "neurology", name: "Neurology Department" },
-    { id: "pediatrics", name: "Pediatrics Department" },
-    { id: "orthopedics", name: "Orthopedics Department" },
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -415,7 +447,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-semibold text-green-800 mb-1">Email</h3>
-                <p className="text-gray-700">info@godsknot.com</p>
+                <p className="text-gray-700">godsknothospital@gmail.com</p>
                 <p className="text-gray-700">appointments@godsknot.com</p>
               </div>
             </motion.div>
@@ -572,7 +604,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="phone" id="phone-preference" />
-                      <Label htmlFor="phone-preference">Phone</Label>
+                      <Label htmlFor="phone-preference">WhatsApp</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -633,15 +665,11 @@ export default function ContactPage() {
                     </p>
                   </CardContent>
                 </Card>
-
-               
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-
-      
 
       <Footer />
     </div>

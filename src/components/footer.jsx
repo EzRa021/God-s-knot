@@ -127,10 +127,10 @@ export default function Footer() {
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-green-300" />
                 <a
-                  href="mailto:info@God's Knot.com"
+                  href="mailto:godsknothospital@gmail.com"
                   className="text-green-100 hover:text-white transition-colors"
                 >
-                  info@God's Knot.com
+                  godsknothospital@gmail.com
                 </a>
               </li>
             </ul>
