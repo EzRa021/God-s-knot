@@ -149,7 +149,7 @@ export default function AmbulancePage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/ambulance.jpg')" }}
+          style={{ backgroundImage: "url('/WhatsApp Image 2025-04-28 at 12.31.27 PM.jpeg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
@@ -239,7 +239,7 @@ export default function AmbulancePage() {
 
             <motion.div variants={fadeIn} className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/ambulance.jpg"
+                src="/WhatsApp Image 2025-04-28 at 12.31.25 PM.jpeg"
                 alt="God's Knot Hospital Limited ambulance and paramedics"
                 fill
                 className="object-cover"

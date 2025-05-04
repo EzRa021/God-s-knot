@@ -113,6 +113,21 @@ export default function FertilityCenterPage() {
         "Senior embryologist specializing in IVF laboratory procedures, embryo culture, and advanced reproductive technologies.",
     },
   ]
+  const leadershipTeam = [
+    {
+      name: "Dr. Emmanuel I. Olowokere",
+      role: "Founder & Medical Director",
+      image: "/md.jpg",
+      description:
+        "Senior embryologist specializing in IVF laboratory procedures, embryo culture, and advanced reproductive technologies.",
+    },
+    {
+      name: "Mrs. Rofiat Olowokere",
+      role: "Hospital Administrator",
+      image: "/raf.jpg",
+      bio: "An epitome of diligence, prudence, sacrifice and dedication. Her unflinching support has been crucial to the hospital's development.",
+    }
+  ]
 
   const testimonials = [
     {

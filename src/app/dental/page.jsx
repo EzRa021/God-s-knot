@@ -134,7 +134,7 @@ export default function DentistryPage() {
 
             <motion.div variants={fadeIn} className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/dental1.jpg"
+                src="/WhatsApp Image 2025-04-28 at 12.31.28 PM.jpeg"
                 alt="Modern dental treatment room"
                 fill
                 className="object-cover"

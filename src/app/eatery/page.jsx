@@ -412,7 +412,7 @@ export default function DiningPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            className=""
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -462,41 +462,6 @@ export default function DiningPage() {
                 </div>
               </div>
 
-            </motion.div>
-
-            <motion.div variants={fadeIn} className="grid grid-cols-2 gap-4">
-              <div className="relative h-[200px] rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg?height=200&width=300"
-                  alt="Plant-based meal option"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-[200px] rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg?height=200&width=300"
-                  alt="Gluten-free meal option"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-[200px] rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg?height=200&width=300"
-                  alt="Allergen-free meal preparation"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-[200px] rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg?height=200&width=300"
-                  alt="Nutritionist consultation"
-                  fill
-                  className="object-cover"
-                />
-              </div>
             </motion.div>
           </motion.div>
         </div>

@@ -35,7 +35,7 @@ const navLinks = [
       { name: "Ruffshall Supermarket", href: "supermarket" },
       { name: "Eatery", href: "/eatery" },
       { name: "Lodge", href: "/lodge" },
-      { name: "Conference Center", href: "conference-center" },
+      { name: "Femi & Funmi Busuriyu Conference Center", href: "conference-center" },
     ],
   },
   { name: "Contact", href: "/contact" },

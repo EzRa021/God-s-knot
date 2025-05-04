@@ -3,8 +3,6 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import {
-  Clock,
-  MapPin,
   Phone,
   Utensils,
   Wifi,
@@ -15,16 +13,12 @@ import {
   Headphones,
   Calendar,
   Users,
-  FileText,
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 
@@ -81,7 +75,7 @@ export default function ConferenceCenterPage() {
   const amenities = [
     {
       title: "High-Speed Wi-Fi",
-      description: "Secure, high-speed internet access throughout the conference center.",
+      description: "Secure, high-speed internet access throughout the Femi & Funmi Bisiriyu Conference Center.",
       icon: <Wifi />,
     },
     {
@@ -156,7 +150,7 @@ export default function ConferenceCenterPage() {
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Conference Center</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Femi & Funmi Bisiriyu Conference Center</h1>
               <p className="text-lg md:text-xl">
                 State-of-the-art meeting facilities for medical conferences, training, and professional events.
               </p>
@@ -175,9 +169,9 @@ export default function ConferenceCenterPage() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeIn}>
-              <h2 className="text-3xl font-bold text-green-800 mb-6">About Our Conference Center</h2>
+              <h2 className="text-3xl font-bold text-green-800 mb-6">About Our Femi & Funmi Bisiriyu Conference Center</h2>
               <p className="text-gray-700 mb-6">
-                The GreenHealth Hospital Conference Center offers modern, flexible meeting spaces designed to
+                The Femi & Funmi Bisiriyu Conference Center offers modern, flexible meeting spaces designed to
                 accommodate medical conferences, training sessions, board meetings, and professional events of all
                 sizes.
               </p>
@@ -229,7 +223,7 @@ export default function ConferenceCenterPage() {
             <motion.div variants={fadeIn} className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
               <Image
                 src="/IMG-20250418-WA0001.jpg"
-                alt="Conference Center Main Hall"
+                alt="Femi & Funmi Bisiriyu Conference Center Main Hall"
                 fill
                 className="object-cover"
               />
@@ -410,7 +404,7 @@ export default function ConferenceCenterPage() {
           >
             <h2 className="text-3xl font-bold text-green-900 mb-4">Amenities & Services</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Our conference center offers a comprehensive range of amenities and services to ensure your event runs
+              Our Femi & Funmi Bisiriyu Conference Center offers a comprehensive range of amenities and services to ensure your event runs
               smoothly.
             </p>
           </motion.div>
@@ -437,77 +431,6 @@ export default function ConferenceCenterPage() {
         </div>
       </section>
 
-      {/* Catering */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeIn} className="relative h-[400px] rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/placeholder.svg?height=400&width=600"
-                alt="Catering services"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-
-            <motion.div variants={fadeIn}>
-              <h2 className="text-3xl font-bold text-green-800 mb-6">Catering Services</h2>
-              <p className="text-gray-700 mb-6">
-                Our in-house catering team offers a variety of menu options to suit your event needs, from coffee breaks
-                to formal dinners. All food is prepared fresh by our culinary team with an emphasis on healthy,
-                delicious options.
-              </p>
-
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start">
-                  <div className="bg-green-100 p-2 rounded-full mr-3">
-                    <CheckCircle className="h-5 w-5 text-green-700" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-green-700">Customizable Menus</h4>
-                    <p className="text-gray-600">
-                      Work with our chef to create custom menus tailored to your event and dietary requirements.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-green-100 p-2 rounded-full mr-3">
-                    <CheckCircle className="h-5 w-5 text-green-700" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-green-700">Refreshment Packages</h4>
-                    <p className="text-gray-600">
-                      Coffee breaks, continental breakfasts, and all-day beverage service options.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="bg-green-100 p-2 rounded-full mr-3">
-                    <CheckCircle className="h-5 w-5 text-green-700" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-green-700">Special Dietary Accommodations</h4>
-                    <p className="text-gray-600">
-                      Vegetarian, vegan, gluten-free, and allergen-specific meal options available.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <Button className="bg-green-600 hover:bg-green-700">View Catering Menu</Button>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
     
       {/* FAQs */}
       <section className="py-20">
@@ -520,7 +443,7 @@ export default function ConferenceCenterPage() {
           >
             <h2 className="text-3xl font-bold text-green-900 mb-4">Frequently Asked Questions</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Find answers to common questions about our conference center.
+              Find answers to common questions about our Femi & Funmi Bisiriyu Conference Center.
             </p>
           </motion.div>
 
@@ -550,7 +473,7 @@ export default function ConferenceCenterPage() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 mb-4">
-                Have more questions? Contact our conference center team for additional information.
+                Have more questions? Contact our Femi & Funmi Bisiriyu Conference Center team for additional information.
               </p>
               <Button className="bg-green-600 hover:bg-green-700">
                 <Phone className="mr-2 h-4 w-4" /> Contact Us
