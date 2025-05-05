@@ -1,19 +1,49 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-import { Clock, MapPin, Phone, Calendar, Heart, Users, Microscope, Clipboard, ChevronRight, FileText, Star, StarHalf, Info, Search } from 'lucide-react'
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Progress } from "@/components/ui/progress"
+import { motion } from "framer-motion";
+import Image from "next/image";
+import {
+  Phone,
+  Calendar,
+  Heart,
+  Users,
+  Microscope,
+  Clipboard,
+  ChevronRight,
+  FileText,
+  Star,
+  StarHalf,
+  Info,
+  Search,
+} from "lucide-react";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function FertilityCenterPage() {
   const fadeIn = {
@@ -23,7 +53,7 @@ export default function FertilityCenterPage() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
@@ -33,7 +63,7 @@ export default function FertilityCenterPage() {
         staggerChildren: 0.2,
       },
     },
-  }
+  };
 
   const treatmentOptions = [
     {
@@ -88,7 +118,7 @@ export default function FertilityCenterPage() {
         "Endometriosis treatment",
       ],
     },
-  ]
+  ];
 
   const fertilityTeam = [
     {
@@ -112,7 +142,7 @@ export default function FertilityCenterPage() {
       description:
         "Senior embryologist specializing in IVF laboratory procedures, embryo culture, and advanced reproductive technologies.",
     },
-  ]
+  ];
   const leadershipTeam = [
     {
       name: "Dr. Emmanuel I. Olowokere",
@@ -126,8 +156,8 @@ export default function FertilityCenterPage() {
       role: "Hospital Administrator",
       image: "/raf.jpg",
       bio: "An epitome of diligence, prudence, sacrifice and dedication. Her unflinching support has been crucial to the hospital's development.",
-    }
-  ]
+    },
+  ];
 
   const testimonials = [
     {
@@ -148,7 +178,7 @@ export default function FertilityCenterPage() {
       name: "Michelle Garcia",
       rating: 4.5,
     },
-  ]
+  ];
 
   const successRates = [
     { age: "Under 35", ivfRate: 60, iuiRate: 20 },
@@ -156,7 +186,7 @@ export default function FertilityCenterPage() {
     { age: "38-40", ivfRate: 35, iuiRate: 10 },
     { age: "41-42", ivfRate: 20, iuiRate: 5 },
     { age: "Over 42", ivfRate: 5, iuiRate: 2 },
-  ]
+  ];
 
   const faqs = [
     {
@@ -189,7 +219,7 @@ export default function FertilityCenterPage() {
       answer:
         "We recognize that fertility treatment can be emotionally challenging, so we offer comprehensive support services including: fertility counseling with licensed mental health professionals specializing in reproductive issues, support groups for patients at various stages of treatment, nutritional counseling to optimize fertility and overall health, acupuncture and mind-body programs, and financial counselors to help navigate insurance and payment options. Our goal is to support you through every aspect of your fertility journey.",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -197,16 +227,24 @@ export default function FertilityCenterPage() {
 
       {/* Hero Section */}
       <section className="relative pt-20">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-900/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
           style={{ backgroundImage: "url('/IMG_0589.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
-            <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Fertility Center</h1>
+            <motion.div
+              className="max-w-2xl text-white"
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                Fertility Center
+              </h1>
               <p className="text-lg md:text-xl">
-                Compassionate care and advanced reproductive technologies to help build your family.
+                Compassionate care and advanced reproductive technologies to
+                help build your family.
               </p>
             </motion.div>
           </div>
@@ -223,11 +261,15 @@ export default function FertilityCenterPage() {
             variants={staggerContainer}
           >
             <motion.div variants={fadeIn}>
-              <h2 className="text-3xl font-bold text-green-800 mb-6">Compassionate Fertility Care</h2>
+              <h2 className="text-3xl font-bold text-green-800 mb-6">
+                Compassionate Fertility Care
+              </h2>
               <p className="text-gray-700 mb-6">
-                At God's Knot Hospital Limited Fertility Center, we understand that the journey to parenthood can be challenging. Our
-                team of reproductive specialists combines advanced medical expertise with compassionate care to help you
-                achieve your dream of building a family.
+                At God's Knot Hospital Limited Fertility Center, we understand
+                that the journey to parenthood can be challenging. Our team of
+                reproductive specialists combines advanced medical expertise
+                with compassionate care to help you achieve your dream of
+                building a family.
               </p>
 
               <div className="space-y-4 mb-8">
@@ -236,9 +278,12 @@ export default function FertilityCenterPage() {
                     <Users className="h-5 w-5 text-green-700" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-green-700">Personalized Approach</h4>
+                    <h4 className="font-semibold text-green-700">
+                      Personalized Approach
+                    </h4>
                     <p className="text-gray-600">
-                      We develop individualized treatment plans tailored to your unique needs, circumstances, and goals.
+                      We develop individualized treatment plans tailored to your
+                      unique needs, circumstances, and goals.
                     </p>
                   </div>
                 </div>
@@ -248,10 +293,13 @@ export default function FertilityCenterPage() {
                     <Microscope className="h-5 w-5 text-green-700" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-green-700">Advanced Technology</h4>
+                    <h4 className="font-semibold text-green-700">
+                      Advanced Technology
+                    </h4>
                     <p className="text-gray-600">
-                      Our state-of-the-art laboratory and cutting-edge reproductive technologies offer the highest
-                      standards of care.
+                      Our state-of-the-art laboratory and cutting-edge
+                      reproductive technologies offer the highest standards of
+                      care.
                     </p>
                   </div>
                 </div>
@@ -261,9 +309,12 @@ export default function FertilityCenterPage() {
                     <Heart className="h-5 w-5 text-green-700" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-green-700">Comprehensive Support</h4>
+                    <h4 className="font-semibold text-green-700">
+                      Comprehensive Support
+                    </h4>
                     <p className="text-gray-600">
-                      We provide emotional, educational, and financial support throughout your fertility journey.
+                      We provide emotional, educational, and financial support
+                      throughout your fertility journey.
                     </p>
                   </div>
                 </div>
@@ -273,15 +324,21 @@ export default function FertilityCenterPage() {
                 <Button className="bg-green-600 hover:bg-green-700">
                   <Calendar className="mr-2 h-4 w-4" /> Schedule Consultation
                 </Button>
-                <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
+                <Button
+                  variant="outline"
+                  className="border-green-600 text-green-700 hover:bg-green-50"
+                >
                   <FileText className="mr-2 h-4 w-4" /> Treatment Options
                 </Button>
               </div>
             </motion.div>
 
-            <motion.div variants={fadeIn} className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
+            <motion.div
+              variants={fadeIn}
+              className="relative h-[500px] rounded-lg overflow-hidden shadow-lg"
+            >
               <Image
-                src="/african-american-medic-pregnant-woman-talking.jpg"
+                src="/WhatsApp Image 2025-05-05 at 11.50.27 AM.jpeg"
                 alt="Doctor consulting with patient at Fertility Center"
                 fill
                 className="object-cover"
@@ -300,10 +357,12 @@ export default function FertilityCenterPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Fertility Treatment Options</h2>
+            <h2 className="text-3xl font-bold text-green-900 mb-4">
+              Fertility Treatment Options
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We offer a comprehensive range of fertility treatments and reproductive technologies to address various
-              fertility challenges.
+              We offer a comprehensive range of fertility treatments and
+              reproductive technologies to address various fertility challenges.
             </p>
           </motion.div>
 
@@ -319,10 +378,14 @@ export default function FertilityCenterPage() {
                 <Card className="border-green-100 h-full hover:shadow-md transition-shadow">
                   <CardHeader className="pb-2">
                     {treatment.icon}
-                    <CardTitle className="text-xl text-green-800">{treatment.title}</CardTitle>
+                    <CardTitle className="text-xl text-green-800">
+                      {treatment.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-gray-600 text-base mb-6">{treatment.description}</CardDescription>
+                    <CardDescription className="text-gray-600 text-base mb-6">
+                      {treatment.description}
+                    </CardDescription>
                     <div className="space-y-2">
                       {treatment.details.map((detail, idx) => (
                         <div key={idx} className="flex items-center">
@@ -333,7 +396,10 @@ export default function FertilityCenterPage() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="ghost" className="text-green-700 hover:text-green-800 hover:bg-green-50 p-0">
+                    <Button
+                      variant="ghost"
+                      className="text-green-700 hover:text-green-800 hover:bg-green-50 p-0"
+                    >
                       Learn more <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
                   </CardFooter>
@@ -349,10 +415,14 @@ export default function FertilityCenterPage() {
             viewport={{ once: true }}
           >
             <p className="text-gray-600 mb-4">
-              Our fertility specialists will help determine which treatment options are most appropriate for your
-              specific situation during your consultation.
+              Our fertility specialists will help determine which treatment
+              options are most appropriate for your specific situation during
+              your consultation.
             </p>
-            <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
+            <Button
+              variant="outline"
+              className="border-green-600 text-green-700 hover:bg-green-50"
+            >
               View All Treatment Options
             </Button>
           </motion.div>
@@ -368,10 +438,12 @@ export default function FertilityCenterPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Your Fertility Journey</h2>
+            <h2 className="text-3xl font-bold text-green-900 mb-4">
+              Your Fertility Journey
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Understanding what to expect during your fertility treatment process can help you feel more prepared and
-              confident.
+              Understanding what to expect during your fertility treatment
+              process can help you feel more prepared and confident.
             </p>
           </motion.div>
 
@@ -379,20 +451,19 @@ export default function FertilityCenterPage() {
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12">
               <TabsTrigger value="initial">Initial Consultation</TabsTrigger>
               <TabsTrigger value="testing">Diagnostic Testing</TabsTrigger>
-              <TabsTrigger value="treatment">Treatment Plan</TabsTrigger>
               <TabsTrigger value="ongoing">Ongoing Care</TabsTrigger>
             </TabsList>
 
             <TabsContent value="initial">
               <motion.div
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
+                className="grid grid-cols-1 mt-10 lg:grid-cols-2 gap-8 items-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <div className="relative h-[400px] rounded-lg overflow-hidden shadow-md">
                   <Image
-                    src="/placeholder.svg?height=400&width=600"
+                    src="/WhatsApp Image 2025-05-05 at 11.53.03 AM.jpeg"
                     alt="Doctor consultation with patient"
                     fill
                     className="object-cover"
@@ -400,19 +471,25 @@ export default function FertilityCenterPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-green-800 mb-6">Initial Consultation</h3>
+                  <h3 className="text-2xl font-bold text-green-800 mb-6">
+                    Initial Consultation
+                  </h3>
                   <p className="text-gray-700 mb-6">
-                    Your fertility journey begins with a comprehensive consultation with one of our reproductive
-                    specialists. During this visit, we will:
+                    Your fertility journey begins with a comprehensive
+                    consultation with one of our reproductive specialists.
+                    During this visit, we will:
                   </p>
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Review Your Medical History</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Review Your Medical History
+                        </h4>
                         <p className="text-gray-600">
-                          Discuss your reproductive history, previous treatments, and overall health
+                          Discuss your reproductive history, previous
+                          treatments, and overall health
                         </p>
                       </div>
                     </div>
@@ -420,9 +497,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Understand Your Goals</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Understand Your Goals
+                        </h4>
                         <p className="text-gray-600">
-                          Discuss your family-building goals and expectations for treatment
+                          Discuss your family-building goals and expectations
+                          for treatment
                         </p>
                       </div>
                     </div>
@@ -430,9 +510,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Initial Assessment</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Initial Assessment
+                        </h4>
                         <p className="text-gray-600">
-                          Perform a physical examination and possibly an ultrasound evaluation
+                          Perform a physical examination and possibly an
+                          ultrasound evaluation
                         </p>
                       </div>
                     </div>
@@ -440,9 +523,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Discuss Next Steps</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Discuss Next Steps
+                        </h4>
                         <p className="text-gray-600">
-                          Outline recommended diagnostic testing and potential treatment approaches
+                          Outline recommended diagnostic testing and potential
+                          treatment approaches
                         </p>
                       </div>
                     </div>
@@ -450,10 +536,13 @@ export default function FertilityCenterPage() {
 
                   <Alert className="bg-green-50 border-green-200">
                     <Info className="h-4 w-4 text-green-600" />
-                    <AlertTitle className="text-green-800">Preparation Tip</AlertTitle>
+                    <AlertTitle className="text-green-800">
+                      Preparation Tip
+                    </AlertTitle>
                     <AlertDescription className="text-gray-700">
-                      Bring any previous fertility-related medical records, test results, and a list of current
-                      medications to your initial consultation.
+                      Bring any previous fertility-related medical records, test
+                      results, and a list of current medications to your initial
+                      consultation.
                     </AlertDescription>
                   </Alert>
                 </div>
@@ -468,19 +557,25 @@ export default function FertilityCenterPage() {
                 transition={{ duration: 0.5 }}
               >
                 <div className="order-2 lg:order-1">
-                  <h3 className="text-2xl font-bold text-green-800 mb-6">Diagnostic Testing</h3>
+                  <h3 className="text-2xl font-bold text-green-800 mb-6">
+                    Diagnostic Testing
+                  </h3>
                   <p className="text-gray-700 mb-6">
-                    Comprehensive diagnostic testing helps us identify the underlying causes of fertility challenges and
-                    develop an effective treatment plan. Common fertility tests include:
+                    Comprehensive diagnostic testing helps us identify the
+                    underlying causes of fertility challenges and develop an
+                    effective treatment plan. Common fertility tests include:
                   </p>
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Hormone Testing</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Hormone Testing
+                        </h4>
                         <p className="text-gray-600">
-                          Blood tests to evaluate hormone levels that affect ovulation and reproductive function
+                          Blood tests to evaluate hormone levels that affect
+                          ovulation and reproductive function
                         </p>
                       </div>
                     </div>
@@ -488,9 +583,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Ovarian Reserve Testing</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Ovarian Reserve Testing
+                        </h4>
                         <p className="text-gray-600">
-                          Assessment of egg quantity and quality through blood tests and ultrasound
+                          Assessment of egg quantity and quality through blood
+                          tests and ultrasound
                         </p>
                       </div>
                     </div>
@@ -498,9 +596,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Semen Analysis</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Semen Analysis
+                        </h4>
                         <p className="text-gray-600">
-                          Evaluation of sperm count, motility, morphology, and other parameters
+                          Evaluation of sperm count, motility, morphology, and
+                          other parameters
                         </p>
                       </div>
                     </div>
@@ -508,9 +609,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Imaging Studies</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Imaging Studies
+                        </h4>
                         <p className="text-gray-600">
-                          Ultrasound, hysterosalpingogram (HSG), or sonohysterogram to evaluate reproductive organs
+                          Ultrasound, hysterosalpingogram (HSG), or
+                          sonohysterogram to evaluate reproductive organs
                         </p>
                       </div>
                     </div>
@@ -518,98 +622,24 @@ export default function FertilityCenterPage() {
 
                   <Alert className="bg-green-50 border-green-200">
                     <Info className="h-4 w-4 text-green-600" />
-                    <AlertTitle className="text-green-800">Testing Timeline</AlertTitle>
+                    <AlertTitle className="text-green-800">
+                      Testing Timeline
+                    </AlertTitle>
                     <AlertDescription className="text-gray-700">
-                      Most diagnostic testing is completed within one menstrual cycle. Our team will coordinate your
-                      tests to minimize office visits.
+                      Most diagnostic testing is completed within one menstrual
+                      cycle. Our team will coordinate your tests to minimize
+                      office visits.
                     </AlertDescription>
                   </Alert>
                 </div>
 
                 <div className="relative h-[400px] rounded-lg overflow-hidden shadow-md order-1 lg:order-2">
                   <Image
-                    src="/placeholder.svg?height=400&width=600"
+                    src="/WhatsApp Image 2025-05-05 at 11.50.27 AM.jpeg"
                     alt="Fertility diagnostic testing"
                     fill
                     className="object-cover"
                   />
-                </div>
-              </motion.div>
-            </TabsContent>
-
-            <TabsContent value="treatment">
-              <motion.div
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="relative h-[400px] rounded-lg overflow-hidden shadow-md">
-                  <Image
-                    src="/placeholder.svg?height=400&width=600"
-                    alt="Doctor discussing treatment plan with patient"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold text-green-800 mb-6">Treatment Plan</h3>
-                  <p className="text-gray-700 mb-6">
-                    Based on your diagnostic results and personal goals, we'll develop a customized treatment plan. This
-                    phase includes:
-                  </p>
-
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-start">
-                      <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-green-700">Treatment Consultation</h4>
-                        <p className="text-gray-600">
-                          Detailed discussion of recommended treatments, success rates, and timeline
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-green-700">Financial Counseling</h4>
-                        <p className="text-gray-600">
-                          Review of treatment costs, insurance coverage, and available financing options
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-green-700">Treatment Education</h4>
-                        <p className="text-gray-600">
-                          Instruction on medication administration, treatment protocols, and procedures
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-green-700">Treatment Calendar</h4>
-                        <p className="text-gray-600">
-                          Detailed schedule of appointments, medication instructions, and procedures
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Alert className="bg-green-50 border-green-200">
-                    <Info className="h-4 w-4 text-green-600" />
-                    <AlertTitle className="text-green-800">Support Resources</AlertTitle>
-                    <AlertDescription className="text-gray-700">
-                      Our fertility counselors are available to provide emotional support and coping strategies
-                      throughout your treatment journey.
-                    </AlertDescription>
-                  </Alert>
                 </div>
               </motion.div>
             </TabsContent>
@@ -622,19 +652,24 @@ export default function FertilityCenterPage() {
                 transition={{ duration: 0.5 }}
               >
                 <div className="order-2 lg:order-1">
-                  <h3 className="text-2xl font-bold text-green-800 mb-6">Ongoing Care</h3>
+                  <h3 className="text-2xl font-bold text-green-800 mb-6">
+                    Ongoing Care
+                  </h3>
                   <p className="text-gray-700 mb-6">
-                    Throughout your fertility treatment and beyond, our team provides comprehensive support and
-                    monitoring:
+                    Throughout your fertility treatment and beyond, our team
+                    provides comprehensive support and monitoring:
                   </p>
 
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Treatment Monitoring</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Treatment Monitoring
+                        </h4>
                         <p className="text-gray-600">
-                          Regular ultrasounds and blood tests to track response to treatment and adjust as needed
+                          Regular ultrasounds and blood tests to track response
+                          to treatment and adjust as needed
                         </p>
                       </div>
                     </div>
@@ -642,9 +677,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Procedure Support</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Procedure Support
+                        </h4>
                         <p className="text-gray-600">
-                          Comprehensive care during egg retrieval, embryo transfer, and other procedures
+                          Comprehensive care during egg retrieval, embryo
+                          transfer, and other procedures
                         </p>
                       </div>
                     </div>
@@ -652,9 +690,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Early Pregnancy Care</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Early Pregnancy Care
+                        </h4>
                         <p className="text-gray-600">
-                          Close monitoring during early pregnancy with ultrasounds and hormone testing
+                          Close monitoring during early pregnancy with
+                          ultrasounds and hormone testing
                         </p>
                       </div>
                     </div>
@@ -662,9 +703,12 @@ export default function FertilityCenterPage() {
                     <div className="flex items-start">
                       <ChevronRight className="h-5 w-5 text-green-600 mr-2 mt-0.5" />
                       <div>
-                        <h4 className="font-semibold text-green-700">Transition to OB Care</h4>
+                        <h4 className="font-semibold text-green-700">
+                          Transition to OB Care
+                        </h4>
                         <p className="text-gray-600">
-                          Seamless transition to obstetrical care once pregnancy is well-established
+                          Seamless transition to obstetrical care once pregnancy
+                          is well-established
                         </p>
                       </div>
                     </div>
@@ -672,17 +716,20 @@ export default function FertilityCenterPage() {
 
                   <Alert className="bg-green-50 border-green-200">
                     <Info className="h-4 w-4 text-green-600" />
-                    <AlertTitle className="text-green-800">Nurse Support Line</AlertTitle>
+                    <AlertTitle className="text-green-800">
+                      Nurse Support Line
+                    </AlertTitle>
                     <AlertDescription className="text-gray-700">
-                      Our dedicated fertility nurses are available by phone during business hours to answer questions
-                      and provide guidance throughout your treatment.
+                      Our dedicated fertility nurses are available by phone
+                      during business hours to answer questions and provide
+                      guidance throughout your treatment.
                     </AlertDescription>
                   </Alert>
                 </div>
 
                 <div className="relative h-[400px] rounded-lg overflow-hidden shadow-md order-1 lg:order-2">
                   <Image
-                    src="/placeholder.svg?height=400&width=600"
+                    src="/WhatsApp Image 2025-05-05 at 11.50.36 AM.jpeg"
                     alt="Ongoing fertility care and monitoring"
                     fill
                     className="object-cover"
@@ -691,66 +738,6 @@ export default function FertilityCenterPage() {
               </motion.div>
             </TabsContent>
           </Tabs>
-        </div>
-      </section>
-
-
-      {/* Meet the Team */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Our Fertility Specialists</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Meet our team of board-certified reproductive endocrinologists, embryologists, and fertility specialists
-              dedicated to helping you build your family.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {fertilityTeam.map((member, index) => (
-              <motion.div key={member.name} variants={fadeIn}>
-                <Card className="border-green-100 overflow-hidden h-full">
-                  <div className="relative h-64 w-full">
-                    <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="text-green-800">{member.name}</CardTitle>
-                    <CardDescription className="text-gray-600 font-medium">{member.title}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-700">{member.description}</p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button variant="ghost" className="text-green-700 hover:text-green-800 hover:bg-green-50 w-full">
-                      View Full Profile
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
-              Meet Our Full Team
-            </Button>
-          </motion.div>
         </div>
       </section>
 
@@ -763,9 +750,12 @@ export default function FertilityCenterPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Patient Success Stories</h2>
+            <h2 className="text-3xl font-bold text-green-900 mb-4">
+              Patient Success Stories
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Read about the experiences of patients who have achieved their dream of parenthood with our help.
+              Read about the experiences of patients who have achieved their
+              dream of parenthood with our help.
             </p>
           </motion.div>
 
@@ -791,13 +781,22 @@ export default function FertilityCenterPage() {
                         <path d="M13.415.001C6.07 5.185.887 13.681.887 23.041c0 7.632 4.608 12.096 9.936 12.096 5.04 0 8.784-4.032 8.784-8.784 0-4.752-3.312-8.208-7.632-8.208-.864 0-2.016.144-2.304.288.72-4.896 5.328-10.656 9.936-13.536L13.415.001zm24.768 0c-7.2 5.184-12.384 13.68-12.384 23.04 0 7.632 4.608 12.096 9.936 12.096 4.896 0 8.784-4.032 8.784-8.784 0-4.752-3.456-8.208-7.776-8.208-.864 0-1.872.144-2.16.288.72-4.896 5.184-10.656 9.792-13.536L38.183.001z"></path>
                       </svg>
                     </div>
-                    <p className="text-gray-700 mb-6 italic">{testimonial.quote}</p>
+                    <p className="text-gray-700 mb-6 italic">
+                      {testimonial.quote}
+                    </p>
                     <div className="mt-auto">
-                      <p className="font-semibold text-green-800">{testimonial.name}</p>
+                      <p className="font-semibold text-green-800">
+                        {testimonial.name}
+                      </p>
                       <div className="flex mt-2">
-                        {[...Array(Math.floor(testimonial.rating))].map((_, i) => (
-                          <Star key={i} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                        ))}
+                        {[...Array(Math.floor(testimonial.rating))].map(
+                          (_, i) => (
+                            <Star
+                              key={i}
+                              className="h-4 w-4 text-yellow-500 fill-yellow-500"
+                            />
+                          )
+                        )}
                         {testimonial.rating % 1 !== 0 && (
                           <StarHalf className="h-4 w-4 text-yellow-500 fill-yellow-500" />
                         )}
@@ -815,7 +814,10 @@ export default function FertilityCenterPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
+            <Button
+              variant="outline"
+              className="border-green-600 text-green-700 hover:bg-green-50"
+            >
               Read More Success Stories
             </Button>
           </motion.div>
@@ -831,10 +833,12 @@ export default function FertilityCenterPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Schedule a Consultation</h2>
+            <h2 className="text-3xl font-bold text-green-900 mb-4">
+              Schedule a Consultation
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Take the first step on your fertility journey. Schedule a consultation with one of our specialists to
-              discuss your options.
+              Take the first step on your fertility journey. Schedule a
+              consultation with one of our specialists to discuss your options.
             </p>
           </motion.div>
 
@@ -846,107 +850,191 @@ export default function FertilityCenterPage() {
           >
             <Card className="border-green-100 shadow-md">
               <CardHeader>
-                <CardTitle className="text-green-800">Fertility Consultation Request</CardTitle>
+                <CardTitle className="text-green-800">
+                  Fertility Consultation Request
+                </CardTitle>
                 <CardDescription>
-                  Fill out the form below to request an appointment. Our staff will contact you to confirm.
+                  Fill out the form below to request an appointment. Our staff
+                  will contact you to confirm.
                 </CardDescription>
               </CardHeader>
+
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="name">Full Name</Label>
-                      <Input id="name" placeholder="Enter your full name" className="border-green-200" />
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+
+                    // Get form data
+                    const formData = new FormData(e.currentTarget);
+                    const name = formData.get("name");
+                    const email = formData.get("email");
+                    const phone = formData.get("phone");
+                    const date = formData.get("date");
+                    const time = formData.get("time");
+                    const reason = formData.get("reason");
+                    const insurance = formData.get("insurance");
+                    const notes = formData.get("notes");
+
+                    // Format message for WhatsApp
+                    const message = `
+*New Appointment Request*
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Date: ${date}
+Time: ${time}
+Reason: ${reason}
+Insurance: ${insurance || "Not provided"}
+Additional Notes: ${notes || "None"}
+    `.trim();
+
+                    // Encode the message for WhatsApp URL
+                    const encodedMessage = encodeURIComponent(message);
+
+                    // Replace with your WhatsApp number (include country code without +)
+                    const whatsappNumber = "08132815449"; // Replace with your actual number
+
+                    // Open WhatsApp with the message
+                    window.open(
+                      `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
+                      "_blank"
+                    );
+                  }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="name">Full Name</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          placeholder="Enter your full name"
+                          className="border-green-200"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="Enter your email"
+                          className="border-green-200"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          placeholder="Enter your phone number"
+                          className="border-green-200"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="date">Preferred Date</Label>
+                        <Input
+                          id="date"
+                          name="date"
+                          type="date"
+                          className="border-green-200"
+                          required
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input id="email" type="email" placeholder="Enter your email" className="border-green-200" />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" placeholder="Enter your phone number" className="border-green-200" />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="date">Preferred Date</Label>
-                      <Input id="date" type="date" className="border-green-200" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="time">Preferred Time</Label>
-                      <Select>
-                        <SelectTrigger className="border-green-200">
-                          <SelectValue placeholder="Select a time" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="morning">Morning (8AM - 12PM)</SelectItem>
-                          <SelectItem value="afternoon">Afternoon (12PM - 4PM)</SelectItem>
-                          <SelectItem value="evening">Evening (4PM - 5PM)</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="provider">Preferred Provider (Optional)</Label>
-                      <Select>
-                        <SelectTrigger className="border-green-200">
-                          <SelectValue placeholder="Select a provider" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="any">No Preference</SelectItem>
-                          {fertilityTeam.map((member) => (
-                            <SelectItem key={member.name} value={member.name.toLowerCase().replace(/\s+/g, "-")}>
-                              {member.name}
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="time">Preferred Time</Label>
+                        <Select name="time" required>
+                          <SelectTrigger className="border-green-200">
+                            <SelectValue placeholder="Select a time" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="Morning (8AM - 12PM)">
+                              Morning (8AM - 12PM)
                             </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+                            <SelectItem value="Afternoon (12PM - 4PM)">
+                              Afternoon (12PM - 4PM)
+                            </SelectItem>
+                            <SelectItem value="Evening (4PM - 5PM)">
+                              Evening (4PM - 5PM)
+                            </SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                    <div>
-                      <Label htmlFor="reason">Reason for Visit</Label>
-                      <Select>
-                        <SelectTrigger className="border-green-200">
-                          <SelectValue placeholder="Select a reason" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="initial">Initial Fertility Consultation</SelectItem>
-                          <SelectItem value="followup">Follow-up Appointment</SelectItem>
-                          <SelectItem value="ivf">IVF Consultation</SelectItem>
-                          <SelectItem value="preservation">Fertility Preservation</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                      <div>
+                        <Label htmlFor="reason">Reason for Visit</Label>
+                        <Select name="reason" required>
+                          <SelectTrigger className="border-green-200">
+                            <SelectValue placeholder="Select a reason" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="Initial Fertility Consultation">
+                              Initial Fertility Consultation
+                            </SelectItem>
+                            <SelectItem value="Follow-up Appointment">
+                              Follow-up Appointment
+                            </SelectItem>
+                            <SelectItem value="IVF Consultation">
+                              IVF Consultation
+                            </SelectItem>
+                            <SelectItem value="Fertility Preservation">
+                              Fertility Preservation
+                            </SelectItem>
+                            <SelectItem value="Other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                    <div>
-                      <Label htmlFor="insurance">Insurance Provider (Optional)</Label>
-                      <Input id="insurance" placeholder="Enter your insurance provider" className="border-green-200" />
+                      <div>
+                        <Label htmlFor="insurance">
+                          Insurance Provider (Optional)
+                        </Label>
+                        <Input
+                          id="insurance"
+                          name="insurance"
+                          placeholder="Enter your insurance provider"
+                          className="border-green-200"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-6">
-                  <Label htmlFor="notes">Additional Information</Label>
-                  <textarea
-                    id="notes"
-                    className="w-full min-h-[100px] p-2 border border-green-200 rounded-md"
-                    placeholder="Please share any additional information that might be helpful for your consultation"
-                  ></textarea>
-                </div>
+                  <div className="mt-6">
+                    <Label htmlFor="notes">Additional Information</Label>
+                    <textarea
+                      id="notes"
+                      name="notes"
+                      className="w-full min-h-[100px] p-2 border border-green-200 rounded-md"
+                      placeholder="Please share any additional information that might be helpful for your consultation"
+                    ></textarea>
+                  </div>
+
+                  <div className="flex justify-between mt-6">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="border-green-600 text-green-700 hover:bg-green-50"
+                    >
+                      <Phone className="mr-2 h-4 w-4" /> Call Instead
+                    </Button>
+                    <Button
+                      type="submit"
+                      className="bg-green-600 hover:bg-green-700"
+                    >
+                      <Calendar className="mr-2 h-4 w-4" /> Submit via WhatsApp
+                    </Button>
+                  </div>
+                </form>
               </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
-                  <Phone className="mr-2 h-4 w-4" /> Call Instead
-                </Button>
-                <Button className="bg-green-600 hover:bg-green-700">
-                  <Calendar className="mr-2 h-4 w-4" /> Submit Request
-                </Button>
-              </CardFooter>
             </Card>
           </motion.div>
         </div>
@@ -961,9 +1049,12 @@ export default function FertilityCenterPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-green-900 mb-4">
+              Frequently Asked Questions
+            </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Find answers to common questions about fertility treatments and our services.
+              Find answers to common questions about fertility treatments and
+              our services.
             </p>
           </motion.div>
 
@@ -980,7 +1071,9 @@ export default function FertilityCenterPage() {
                     <AccordionTrigger className="px-6 py-4 text-green-800 hover:text-green-700 hover:no-underline">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 text-gray-700">{faq.answer}</AccordionContent>
+                    <AccordionContent className="px-6 pb-4 text-gray-700">
+                      {faq.answer}
+                    </AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
@@ -993,7 +1086,8 @@ export default function FertilityCenterPage() {
               viewport={{ once: true }}
             >
               <p className="text-gray-600 mb-4">
-                Have more questions? Contact our fertility center for additional information.
+                Have more questions? Contact our fertility center for additional
+                information.
               </p>
               <Button className="bg-green-600 hover:bg-green-700">
                 <Phone className="mr-2 h-4 w-4" /> Contact Us
@@ -1002,35 +1096,7 @@ export default function FertilityCenterPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Call to Action */}
-      <section className="py-16 bg-green-800">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-white mb-6">Begin Your Fertility Journey Today</h2>
-            <p className="text-lg text-green-100 max-w-3xl mx-auto mb-8">
-              Take the first step toward building your family. Our compassionate team is here to support you every step
-              of the way.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-green-800 hover:bg-green-100">
-                <Calendar className="mr-2 h-4 w-4" /> Schedule Consultation
-              </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-green-700/50">
-                <Search className="mr-2 h-4 w-4" /> Explore Treatment Options
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <Footer />
     </div>
-  )
+  );
 }
-

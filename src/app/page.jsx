@@ -13,6 +13,7 @@ import Image from "next/image"
 import HeroCarousel from "@/components/hero-carousel"
 import FeatureSection from "@/components/feature-section"
 import StatsSection from "@/components/stats-section"
+import MultiImageSlider from "@/components/image-slider"
 
 export default function HomePage() {
   const fadeIn = {
@@ -59,6 +60,13 @@ export default function HomePage() {
       image: "/olu.jpg",
       bio: "CMD, UNIMEDTH, Ondo. A long-time mentor to the founder and contributor to the hospital's growth.",
     },
+  ]
+
+  // Facility images for the slider
+  const facilityImages = [
+    { src: "/WhatsApp Image 2025-05-02 at 7.57.51 AM (1).jpeg", alt: "Hospital reception area" },
+    { src: "/WhatsApp Image 2025-05-02 at 7.57.52 AM.jpeg", alt: "Modern operating theater" },
+    { src: "/WhatsApp Image 2025-05-02 at 7.57.53 AM.jpeg", alt: "Patient ward" },
   ]
 
   return (
@@ -134,6 +142,29 @@ export default function HomePage() {
       {/* Stats Section */}
       <StatsSection />
 
+      {/* Facility Images Slider */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <MultiImageSlider images={facilityImages} className="shadow-xl" />
+          </motion.div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -163,7 +194,7 @@ export default function HomePage() {
               title="Cardiology"
               description="Comprehensive heart care with advanced diagnostic and treatment options."
             />
-           
+
             <ServiceCard
               icon="Stethoscope"
               title="Primary Care"
@@ -251,26 +282,6 @@ export default function HomePage() {
           </motion.div>
 
           <TestimonialCarousel />
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-green-700 to-green-900">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center text-white"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Experience Quality Healthcare?</h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Schedule an appointment today and let our team of medical professionals take care of your health needs.
-            </p>
-            <Button size="lg" className="bg-white text-green-800 hover:bg-green-50">
-              Book an Appointment Now
-            </Button>
-          </motion.div>
         </div>
       </section>
 

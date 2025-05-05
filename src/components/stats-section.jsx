@@ -52,8 +52,8 @@ export default function StatsSection() {
           viewport={{ once: true }}
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 p-8 md:p-12">
-            <Stat value={15} label="Years of Experience" suffix="+" />
-            <Stat value={50} label="Medical Specialists" suffix="+" />
+            <Stat value={10} label="Years of Experience" suffix="+" />
+            <Stat value={30} label="Medical Specialists" suffix="+" />
             <Stat value={10000} label="Patients Served" suffix="+" />
             <Stat value={24} label="Hours of Service" suffix="/7" />
           </div>
