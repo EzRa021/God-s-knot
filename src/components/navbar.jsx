@@ -23,8 +23,8 @@ const navLinks = [
           { name: "Xray", href: "/xray" },
         ],
       },
-      { name: "Dentist", href: "/dental" },
-      { name: "Ambulance", href: "/ambulance" },
+      { name: "Dental Centre", href: "/dental" },
+      { name: " Emergency Services Department", href: "/ambulance" },
       { name: "Fertility Center", href: "/fertility-center" },
     ],
   },
@@ -38,6 +38,7 @@ const navLinks = [
       { name: "Femi & Funmi Busuriyu Conference Center", href: "conference-center" },
     ],
   },
+  { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
   { name: "About", href: "/about" },
 ]

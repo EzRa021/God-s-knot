@@ -93,7 +93,7 @@ export default function HomePage() {
               </div>
               <div>
                 <p className="text-sm text-green-800 font-medium">Emergency Hotline</p>
-                <p className="text-lg font-bold text-green-900">08039297709, 08110014978, 08157041274, 08071301058</p>
+                <p className="text-lg font-bold text-green-900">08110014978, 08157041274, 07032451916</p>
               </div>
             </motion.div>
 

@@ -1,5 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/fertility-center/page": "app/fertility-center/page.js"
+  "/services/page": "app/services/page.js",
+  "/laboratory/page": "app/laboratory/page.js",
+  "/xray/page": "app/xray/page.js",
+  "/fertility-center/page": "app/fertility-center/page.js",
+  "/contact/page": "app/contact/page.js"
 }

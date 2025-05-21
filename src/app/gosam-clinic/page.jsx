@@ -3,19 +3,103 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { Clock, MapPin, Phone, Calendar, Users, ClipboardCheck, Stethoscope, Heart, Brain, TreesIcon as Lungs, Baby, Bone, Activity, ChevronRight, FileText, Search } from 'lucide-react'
+import { useState } from "react"
+import {
+  MapPin,
+  Phone,
+  Calendar,
+  Users,
+  ClipboardCheck,
+  Stethoscope,
+  Heart,
+  Brain,
+  TreesIcon as Lungs,
+  Baby,
+  Bone,
+  Activity,
+  ChevronRight,
+  Search,
+  Syringe,
+  Clipboard,
+} from "lucide-react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+// import { useToast } from "@/components/ui/so"
 
 export default function GOSAMClinicPage() {
+  // Add toast functionality
+  // const { toast } = useToast()
+  
+  // State for form inputs
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    date: "",
+    time: "",
+    specialty: "",
+    reason: "",
+    insurance: "",
+    notes: ""
+  })
+
+  // WhatsApp number to send the form data to (replace with your actual number)
+  const whatsappNumber = "08132815449" // Format: country code + number without +
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { id, value } = e.target
+    setFormData({
+      ...formData,
+      [id]: value
+    })
+  }
+
+  // Handle select changes
+  const handleSelectChange = (id, value) => {
+    setFormData({
+      ...formData,
+      [id]: value
+    })
+  }
+
+  // Format and send data to WhatsApp
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    
+    // Create message text with all form data
+    const message = `
+*New Appointment Request*
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Date: ${formData.date}
+Time: ${formData.time || "Not specified"}
+Specialty: ${formData.specialty || "Not specified"}
+Reason: ${formData.reason}
+Insurance: ${formData.insurance}
+Additional Notes: ${formData.notes || "None"}
+    `.trim()
+    
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message)
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    
+    // Show success toast
+
+    
+    // Open WhatsApp in a new tab/window
+    window.open(whatsappUrl, "_blank")
+  }
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -37,34 +121,51 @@ export default function GOSAMClinicPage() {
 
   const specialties = [
     {
-      name: "Internal Medicine",
-      description: "Comprehensive care for adults focusing on prevention, diagnosis, and treatment of diseases.",
-      icon: <Stethoscope className="h-10 w-10 text-green-600 mb-4" />,
+      name: "Family Medicine Clinic",
+      description:
+        "Comprehensive primary care for patients of all ages, focusing on preventive care and managing chronic conditions.",
+      icon: <Users className="h-10 w-10 text-green-600 mb-4" />,
     },
     {
-      name: "Cardiology",
-      description: "Specialized care for heart conditions with advanced diagnostic and treatment options.",
-      icon: <Heart className="h-10 w-10 text-green-600 mb-4" />,
-    },
-    {
-      name: "Neurology",
-      description: "Expert care for conditions affecting the brain, spine, and nervous system.",
-      icon: <Brain className="h-10 w-10 text-green-600 mb-4" />,
-    },
-    {
-      name: "Pulmonology",
-      description: "Specialized treatment for respiratory conditions and lung health.",
-      icon: <Lungs className="h-10 w-10 text-green-600 mb-4" />,
-    },
-    {
-      name: "Pediatrics",
-      description: "Comprehensive healthcare for infants, children, and adolescents.",
+      name: "ANC (Antenatal Care)",
+      description:
+        "Specialized care for expectant mothers throughout pregnancy, ensuring the health and well-being of both mother and baby.",
       icon: <Baby className="h-10 w-10 text-green-600 mb-4" />,
     },
     {
-      name: "Orthopedics",
-      description: "Expert care for musculoskeletal conditions, injuries, and joint problems.",
+      name: "Gynecology",
+      description:
+        "Specialized care for women's reproductive health, including routine check-ups, diagnostics, and treatments.",
+      icon: <Heart className="h-10 w-10 text-green-600 mb-4" />,
+    },
+    {
+      name: "General Outpatient Clinic",
+      description: "Walk-in and appointment-based care for a wide range of health concerns and conditions.",
+      icon: <Stethoscope className="h-10 w-10 text-green-600 mb-4" />,
+    },
+    {
+      name: "Pediatric Clinic",
+      description:
+        "Specialized healthcare for infants, children, and adolescents, focusing on growth, development, and childhood illnesses.",
+      icon: <Baby className="h-10 w-10 text-green-600 mb-4" />,
+    },
+    {
+      name: "Immunization Clinic",
+      description:
+        "Preventive vaccines for children and adults according to national and international immunization schedules.",
+      icon: <Syringe className="h-10 w-10 text-green-600 mb-4" />,
+    },
+    {
+      name: "Orthopedic Clinic",
+      description:
+        "Specialized care for musculoskeletal conditions, including bone, joint, ligament, tendon, and muscle disorders.",
       icon: <Bone className="h-10 w-10 text-green-600 mb-4" />,
+    },
+    {
+      name: "Wound Dressing and Management",
+      description:
+        "Professional care for acute and chronic wounds, including surgical wounds, pressure ulcers, and diabetic foot ulcers.",
+      icon: <Clipboard className="h-10 w-10 text-green-600 mb-4" />,
     },
   ]
 
@@ -155,10 +256,7 @@ export default function GOSAMClinicPage() {
       {/* Hero Section */}
       <section className="relative pt-20">
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
-        <div
-          className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/IMG_0589.jpg')" }}
-        >
+        <div className="relative h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/IMG_0589.jpg')" }}>
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">GOSAM Clinic</h1>
@@ -169,7 +267,6 @@ export default function GOSAMClinicPage() {
           </div>
         </div>
       </section>
-
 
       {/* Clinic Overview */}
       <section className="py-20">
@@ -223,8 +320,8 @@ export default function GOSAMClinicPage() {
                   <div>
                     <h4 className="font-semibold text-green-700">Preventive Focus</h4>
                     <p className="text-gray-600">
-                      We emphasize preventive care and early intervention to help you maintain optimal health and prevent
-                      disease progression.
+                      We emphasize preventive care and early intervention to help you maintain optimal health and
+                      prevent disease progression.
                     </p>
                   </div>
                 </div>
@@ -243,7 +340,7 @@ export default function GOSAMClinicPage() {
         </div>
       </section>
 
-      {/* Medical Specialties */}
+      {/* Medical Specialties - Changed heading to "Our Services" */}
       <section className="py-20 bg-green-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -252,9 +349,10 @@ export default function GOSAMClinicPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">Our Medical Specialties</h2>
+            <h2 className="text-3xl font-bold text-green-900 mb-4">Our Services</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              GOSAM Clinic offers a wide range of medical specialties to address diverse healthcare needs under one roof.
+              GOSAM Clinic offers a wide range of medical specialties to address diverse healthcare needs under one
+              roof.
             </p>
           </motion.div>
 
@@ -291,15 +389,16 @@ export default function GOSAMClinicPage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
-              View All Specialties
-            </Button>
+            <Link href="/services">
+              <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
+                View All Services
+              </Button>
+            </Link>
           </motion.div>
         </div>
       </section>
 
-
-      {/* Appointment Booking */}
+      {/* Appointment Booking - Updated with form handling */}
       <section className="py-20 bg-green-50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -324,91 +423,141 @@ export default function GOSAMClinicPage() {
               <CardHeader>
                 <CardTitle className="text-green-800">Appointment Request</CardTitle>
                 <CardDescription>
-                  Fill out the form below to request an appointment. Our staff will contact you to confirm.
+                  Fill out the form below to request an appointment. Submit to send details via WhatsApp.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="name">Full Name</Label>
-                      <Input id="name" placeholder="Enter your full name" className="border-green-200" />
+                <form onSubmit={handleSubmit}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="name">Full Name</Label>
+                        <Input 
+                          id="name" 
+                          placeholder="Enter your full name" 
+                          className="border-green-200" 
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          placeholder="Enter your email" 
+                          className="border-green-200" 
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input 
+                          id="phone" 
+                          placeholder="Enter your phone number" 
+                          className="border-green-200" 
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="date">Preferred Date</Label>
+                        <Input 
+                          id="date" 
+                          type="date" 
+                          className="border-green-200" 
+                          value={formData.date}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input id="email" type="email" placeholder="Enter your email" className="border-green-200" />
-                    </div>
+                    <div className="space-y-4">
+                      <div>
+                        <Label htmlFor="time">Preferred Time</Label>
+                        <Select onValueChange={(value) => handleSelectChange("time", value)}>
+                          <SelectTrigger className="border-green-200">
+                            <SelectValue placeholder="Select a time" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="Morning (8AM - 12PM)">Morning (8AM - 12PM)</SelectItem>
+                            <SelectItem value="Afternoon (12PM - 4PM)">Afternoon (12PM - 4PM)</SelectItem>
+                            <SelectItem value="Evening (4PM - 6PM)">Evening (4PM - 6PM)</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                    <div>
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" placeholder="Enter your phone number" className="border-green-200" />
-                    </div>
+                      <div>
+                        <Label htmlFor="specialty">Specialty</Label>
+                        <Select onValueChange={(value) => handleSelectChange("specialty", value)}>
+                          <SelectTrigger className="border-green-200">
+                            <SelectValue placeholder="Select a specialty" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {specialties.map((specialty) => (
+                              <SelectItem key={specialty.name} value={specialty.name}>
+                                {specialty.name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
 
-                    <div>
-                      <Label htmlFor="date">Preferred Date</Label>
-                      <Input id="date" type="date" className="border-green-200" />
+                      <div>
+                        <Label htmlFor="reason">Reason for Visit</Label>
+                        <Input 
+                          id="reason" 
+                          placeholder="Brief description of your concern" 
+                          className="border-green-200" 
+                          value={formData.reason}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="insurance">Insurance Provider</Label>
+                        <Input 
+                          id="insurance" 
+                          placeholder="Enter your insurance provider" 
+                          className="border-green-200" 
+                          value={formData.insurance}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <div>
-                      <Label htmlFor="time">Preferred Time</Label>
-                      <Select>
-                        <SelectTrigger className="border-green-200">
-                          <SelectValue placeholder="Select a time" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="morning">Morning (8AM - 12PM)</SelectItem>
-                          <SelectItem value="afternoon">Afternoon (12PM - 4PM)</SelectItem>
-                          <SelectItem value="evening">Evening (4PM - 6PM)</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="specialty">Specialty</Label>
-                      <Select>
-                        <SelectTrigger className="border-green-200">
-                          <SelectValue placeholder="Select a specialty" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {specialties.map((specialty) => (
-                            <SelectItem key={specialty.name} value={specialty.name.toLowerCase()}>
-                              {specialty.name}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="reason">Reason for Visit</Label>
-                      <Input id="reason" placeholder="Brief description of your concern" className="border-green-200" />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="insurance">Insurance Provider</Label>
-                      <Input id="insurance" placeholder="Enter your insurance provider" className="border-green-200" />
-                    </div>
+                  <div className="mt-6">
+                    <Label htmlFor="notes">Additional Notes</Label>
+                    <textarea
+                      id="notes"
+                      className="w-full min-h-[100px] p-2 border border-green-200 rounded-md"
+                      placeholder="Any additional information that might be helpful"
+                      value={formData.notes}
+                      onChange={handleInputChange}
+                    ></textarea>
                   </div>
-                </div>
-
-                <div className="mt-6">
-                  <Label htmlFor="notes">Additional Notes</Label>
-                  <textarea
-                    id="notes"
-                    className="w-full min-h-[100px] p-2 border border-green-200 rounded-md"
-                    placeholder="Any additional information that might be helpful"
-                  ></textarea>
-                </div>
+                
+                  <div className="mt-6 flex justify-between">
+                    <Button type="button" variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
+                      Call Instead
+                    </Button>
+                    <Button type="submit" className="bg-green-600 hover:bg-green-700">
+                      Submit via WhatsApp
+                    </Button>
+                  </div>
+                </form>
               </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
-                  Call Instead
-                </Button>
-                <Button className="bg-green-600 hover:bg-green-700">Submit Request</Button>
-              </CardFooter>
             </Card>
           </motion.div>
         </div>
@@ -497,55 +646,9 @@ export default function GOSAMClinicPage() {
                 ))}
               </Accordion>
             </div>
-
-            <motion.div
-              className="mt-12 text-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              <p className="text-gray-600 mb-4">
-                Don't see your question here? Contact our clinic for more information.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-green-600 hover:bg-green-700">
-                  <Phone className="mr-2 h-4 w-4" /> Contact Us
-                </Button>
-                <Button variant="outline" className="border-green-600 text-green-700 hover:bg-green-50">
-                  <Search className="mr-2 h-4 w-4" /> Search Resources
-                </Button>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
-
-      {/* Call to Action */}
-      <section className="py-16 bg-green-800">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-white mb-6">Your Health is Our Priority</h2>
-            <p className="text-lg text-green-100 max-w-3xl mx-auto mb-8">
-              Whether you need a routine check-up, specialized care, or ongoing management of a chronic condition, our
-              team at GOSAM Clinic is here to provide the comprehensive care you deserve.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-green-800 hover:bg-green-100">
-                <Calendar className="mr-2 h-4 w-4" /> Schedule Today
-              </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-green-700/50">
-                <MapPin className="mr-2 h-4 w-4" /> Get Directions
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <Footer />
     </div>
   )

@@ -44,6 +44,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Link from "next/link";
 
 export default function FertilityCenterPage() {
   const fadeIn = {
@@ -318,18 +319,6 @@ export default function FertilityCenterPage() {
                     </p>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-green-600 hover:bg-green-700">
-                  <Calendar className="mr-2 h-4 w-4" /> Schedule Consultation
-                </Button>
-                <Button
-                  variant="outline"
-                  className="border-green-600 text-green-700 hover:bg-green-50"
-                >
-                  <FileText className="mr-2 h-4 w-4" /> Treatment Options
-                </Button>
               </div>
             </motion.div>
 
@@ -824,222 +813,6 @@ export default function FertilityCenterPage() {
         </div>
       </section>
 
-      {/* Appointment Booking */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-green-900 mb-4">
-              Schedule a Consultation
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Take the first step on your fertility journey. Schedule a
-              consultation with one of our specialists to discuss your options.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-green-100 shadow-md">
-              <CardHeader>
-                <CardTitle className="text-green-800">
-                  Fertility Consultation Request
-                </CardTitle>
-                <CardDescription>
-                  Fill out the form below to request an appointment. Our staff
-                  will contact you to confirm.
-                </CardDescription>
-              </CardHeader>
-
-              <CardContent>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-
-                    // Get form data
-                    const formData = new FormData(e.currentTarget);
-                    const name = formData.get("name");
-                    const email = formData.get("email");
-                    const phone = formData.get("phone");
-                    const date = formData.get("date");
-                    const time = formData.get("time");
-                    const reason = formData.get("reason");
-                    const insurance = formData.get("insurance");
-                    const notes = formData.get("notes");
-
-                    // Format message for WhatsApp
-                    const message = `
-*New Appointment Request*
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Date: ${date}
-Time: ${time}
-Reason: ${reason}
-Insurance: ${insurance || "Not provided"}
-Additional Notes: ${notes || "None"}
-    `.trim();
-
-                    // Encode the message for WhatsApp URL
-                    const encodedMessage = encodeURIComponent(message);
-
-                    // Replace with your WhatsApp number (include country code without +)
-                    const whatsappNumber = "08132815449"; // Replace with your actual number
-
-                    // Open WhatsApp with the message
-                    window.open(
-                      `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
-                      "_blank"
-                    );
-                  }}
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <div>
-                        <Label htmlFor="name">Full Name</Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          placeholder="Enter your full name"
-                          className="border-green-200"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          placeholder="Enter your email"
-                          className="border-green-200"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          placeholder="Enter your phone number"
-                          className="border-green-200"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="date">Preferred Date</Label>
-                        <Input
-                          id="date"
-                          name="date"
-                          type="date"
-                          className="border-green-200"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-4">
-                      <div>
-                        <Label htmlFor="time">Preferred Time</Label>
-                        <Select name="time" required>
-                          <SelectTrigger className="border-green-200">
-                            <SelectValue placeholder="Select a time" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="Morning (8AM - 12PM)">
-                              Morning (8AM - 12PM)
-                            </SelectItem>
-                            <SelectItem value="Afternoon (12PM - 4PM)">
-                              Afternoon (12PM - 4PM)
-                            </SelectItem>
-                            <SelectItem value="Evening (4PM - 5PM)">
-                              Evening (4PM - 5PM)
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="reason">Reason for Visit</Label>
-                        <Select name="reason" required>
-                          <SelectTrigger className="border-green-200">
-                            <SelectValue placeholder="Select a reason" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="Initial Fertility Consultation">
-                              Initial Fertility Consultation
-                            </SelectItem>
-                            <SelectItem value="Follow-up Appointment">
-                              Follow-up Appointment
-                            </SelectItem>
-                            <SelectItem value="IVF Consultation">
-                              IVF Consultation
-                            </SelectItem>
-                            <SelectItem value="Fertility Preservation">
-                              Fertility Preservation
-                            </SelectItem>
-                            <SelectItem value="Other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="insurance">
-                          Insurance Provider (Optional)
-                        </Label>
-                        <Input
-                          id="insurance"
-                          name="insurance"
-                          placeholder="Enter your insurance provider"
-                          className="border-green-200"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-6">
-                    <Label htmlFor="notes">Additional Information</Label>
-                    <textarea
-                      id="notes"
-                      name="notes"
-                      className="w-full min-h-[100px] p-2 border border-green-200 rounded-md"
-                      placeholder="Please share any additional information that might be helpful for your consultation"
-                    ></textarea>
-                  </div>
-
-                  <div className="flex justify-between mt-6">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="border-green-600 text-green-700 hover:bg-green-50"
-                    >
-                      <Phone className="mr-2 h-4 w-4" /> Call Instead
-                    </Button>
-                    <Button
-                      type="submit"
-                      className="bg-green-600 hover:bg-green-700"
-                    >
-                      <Calendar className="mr-2 h-4 w-4" /> Submit via WhatsApp
-                    </Button>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
       {/* FAQs */}
       <section className="py-20 bg-green-50">
         <div className="container mx-auto px-4">
@@ -1089,9 +862,11 @@ Additional Notes: ${notes || "None"}
                 Have more questions? Contact our fertility center for additional
                 information.
               </p>
-              <Button className="bg-green-600 hover:bg-green-700">
-                <Phone className="mr-2 h-4 w-4" /> Contact Us
-              </Button>
+              <Link href="/contact">
+                <Button className="bg-green-600 hover:bg-green-700">
+                  <Phone className="mr-2 h-4 w-4" /> Contact Us
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

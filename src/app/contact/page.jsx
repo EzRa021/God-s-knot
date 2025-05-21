@@ -431,8 +431,8 @@ Message: ${formData.message}
               </div>
               <div>
                 <h3 className="font-semibold text-green-800 mb-1">Phone</h3>
-                <p className="text-gray-700">Emergency: 08039297709, 08110014978,
-                08157041274, 08071301058</p>
+                <p className="text-gray-700">Emergency:08110014978,
+                08157041274, 07032451916</p>
               </div>
             </motion.div>
 

@@ -25,7 +25,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/GodsknotHospital"
                 className="text-green-100 hover:text-white transition-colors"
                 aria-label="Facebook"
               >
@@ -39,7 +39,7 @@ export default function Footer() {
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/godsknothospitalltd"
                 className="text-green-100 hover:text-white transition-colors"
                 aria-label="Instagram"
               >
@@ -119,9 +119,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-green-300" />
-                <span className="text-green-100">
-                08039297709, 08110014978,
-                08157041274, 08071301058
+                <span className="text-green-100">08110014978,
+                08157041274, 07032451916
                 </span>
               </li>
               <li className="flex items-center">

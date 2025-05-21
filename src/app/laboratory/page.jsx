@@ -143,11 +143,6 @@ export default function LaboratoryPage() {
         "Turnaround times vary by test. Routine tests are often available the same day or within 24 hours. More specialized tests may take several days to a week. Your results will be sent to your doctor who will discuss them with you.",
     },
     {
-      question: "Can I access my lab results online?",
-      answer:
-        "Yes, lab results are available through our secure patient portal. You'll need to register for access if you haven't already. Results are typically posted after your doctor has reviewed them.",
-    },
-    {
       question: "Will my insurance cover laboratory tests?",
       answer:
         "Most insurance plans cover medically necessary laboratory tests. However, coverage varies by plan and test type. We recommend contacting your insurance provider to verify coverage before testing.",
@@ -251,16 +246,6 @@ export default function LaboratoryPage() {
                     </p>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="bg-green-600 hover:bg-green-700">Schedule a Test</Button>
-                <Button
-                  variant="outline"
-                  className="border-green-600 text-green-700 hover:bg-green-50"
-                >
-                  Learn About Test Preparation
-                </Button>
               </div>
             </motion.div>
 
