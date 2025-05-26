@@ -180,7 +180,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-green-800/80 z-10" />
         <div
           className="relative h-[400px] bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/services-hero.jpg')" }}
+          style={{ backgroundImage: "url('/bg2.jpg')" }}
         >
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <motion.div className="max-w-2xl text-white" initial="hidden" animate="visible" variants={fadeIn}>
@@ -192,62 +192,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      {/* Quick Info Section */}
-      <section className="py-8 bg-green-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Phone className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Appointments</h3>
-                <p className="text-gray-700 font-bold">(123) 456-7890</p>
-                <p className="text-gray-700">Book your consultation today</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <Clock className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Working Hours</h3>
-                <p className="text-gray-700">Outpatient: Mon-Fri, 8am-5pm</p>
-                <p className="text-gray-700">Emergency: 24/7</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-sm flex items-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="bg-green-100 p-3 rounded-full mr-4">
-                <MapPin className="h-6 w-6 text-green-700" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-green-800 mb-1">Location</h3>
-                <p className="text-gray-700">123 Healthcare Avenue</p>
-                <p className="text-gray-700">Medical District, City</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Service Categories Overview */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -417,11 +361,7 @@ export default function ServicesPage() {
                   <CardContent>
                     <CardDescription className="text-gray-600 text-base">{service.description}</CardDescription>
                   </CardContent>
-                  <CardFooter>
-                    <Button variant="ghost" className="text-green-700 hover:text-green-800 hover:bg-green-50 p-0">
-                      Learn more <ChevronRight className="h-4 w-4 ml-1" />
-                    </Button>
-                  </CardFooter>
+                  
                 </Card>
               </motion.div>
             ))}
@@ -496,7 +436,7 @@ export default function ServicesPage() {
 
             <motion.div variants={fadeIn} className="relative h-[500px] rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/placeholder.svg?height=500&width=600"
+                src="/WhatsApp Image 2025-04-28 at 12.31.27 PM.jpeg"
                 alt="Emergency department with medical staff attending to patients"
                 fill
                 className="object-cover"
@@ -524,7 +464,7 @@ export default function ServicesPage() {
               >
                 <div className="relative h-[400px] rounded-lg overflow-hidden shadow-md">
                   <Image
-                    src="/placeholder.svg?height=400&width=600"
+                    src="/african-american-medic-pregnant-woman-talking.jpg"
                     alt="Wellness clinic with healthcare provider consulting patient"
                     fill
                     className="object-cover"
@@ -579,9 +519,6 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <Button className="bg-green-600 hover:bg-green-700">
-                    <Calendar className="mr-2 h-4 w-4" /> Schedule Wellness Check
-                  </Button>
                 </div>
               </motion.div>
             </TabsContent>
@@ -638,7 +575,7 @@ export default function ServicesPage() {
 
                 <div className="relative h-[400px] rounded-lg overflow-hidden shadow-md order-1 lg:order-2">
                   <Image
-                    src="/placeholder.svg?height=400&width=600"
+                    src="/IMG_0589.jpg"
                     alt="Modern operating room with surgical equipment"
                     fill
                     className="object-cover"

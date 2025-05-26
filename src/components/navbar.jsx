@@ -38,6 +38,7 @@ const navLinks = [
       { name: "Femi & Funmi Busuriyu Conference Center", href: "conference-center" },
     ],
   },
+  { name: "Our Team", href: "/our-team" },
   { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
   { name: "About", href: "/about" },

@@ -11,15 +11,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/loading.js"
     ],
-    "/gosam-clinic/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/gosam-clinic/page.js"
+      "static/chunks/app/page.js"
     ],
-    "/about/page": [
+    "/our-team/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
+      "static/chunks/app/our-team/page.js"
     ],
     "/services/loading": [
       "static/chunks/webpack.js",
@@ -31,30 +31,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/services/page.js"
     ],
-    "/laboratory/loading": [
+    "/about/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/laboratory/loading.js"
-    ],
-    "/laboratory/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/laboratory/page.js"
-    ],
-    "/xray/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/xray/page.js"
-    ],
-    "/fertility-center/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/fertility-center/page.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
+      "static/chunks/app/about/page.js"
     ]
   }
 }

@@ -1,7 +1,6 @@
 {
+  "/page": "app/page.js",
+  "/our-team/page": "app/our-team/page.js",
   "/services/page": "app/services/page.js",
-  "/laboratory/page": "app/laboratory/page.js",
-  "/xray/page": "app/xray/page.js",
-  "/fertility-center/page": "app/fertility-center/page.js",
-  "/contact/page": "app/contact/page.js"
+  "/about/page": "app/about/page.js"
 }
