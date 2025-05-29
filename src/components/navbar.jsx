@@ -162,11 +162,11 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-          </nav>
-
-          {/* CTA Button */}
+          </nav>          {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button className="bg-green-600 hover:bg-green-700">Book Appointment</Button>
+            <a href="https://wa.me/08132815449?text=Hello%20God's%20Knot%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener noreferrer">
+              <Button className="bg-green-600 hover:bg-green-700">Book Appointment</Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -284,9 +284,9 @@ export default function Navbar() {
                       </Link>
                     )}
                   </div>
-                ))}
-
-                <Button className="bg-green-600 hover:bg-green-700 w-full mt-4">Book Appointment</Button>
+                ))}                <a href="https://wa.me/2348033223824" target="_blank" rel="noopener noreferrer" className="w-full">
+                  <Button className="bg-green-600 hover:bg-green-700 w-full mt-4">Book Appointment</Button>
+                </a>
               </nav>
             </div>
           </motion.div>

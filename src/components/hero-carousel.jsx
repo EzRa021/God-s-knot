@@ -1,11 +1,9 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-
-
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function HeroCarousel() {
   const slides = [
@@ -27,39 +25,39 @@ export default function HeroCarousel() {
       description:
         "Your health and comfort are our priority. We provide personalized care tailored to your unique needs.",
     },
-  ]
+  ];
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   useEffect(() => {
-    let interval
+    let interval;
 
     if (isAutoPlaying) {
       interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length)
-      }, 8000)
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+      }, 8000);
     }
 
-    return () => clearInterval(interval)
-  }, [isAutoPlaying, slides.length])
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, slides.length]);
 
   const goToSlide = (index) => {
-    setCurrentIndex(index)
-    setIsAutoPlaying(false)
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
     // Resume auto-play after 10 seconds of inactivity
-    setTimeout(() => setIsAutoPlaying(true), 10000)
-  }
+    setTimeout(() => setIsAutoPlaying(true), 10000);
+  };
 
   const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1
-    goToSlide(newIndex)
-  }
+    const newIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+    goToSlide(newIndex);
+  };
 
   const goToNext = () => {
-    const newIndex = (currentIndex + 1) % slides.length
-    goToSlide(newIndex)
-  }
+    const newIndex = (currentIndex + 1) % slides.length;
+    goToSlide(newIndex);
+  };
 
   return (
     <div className="relative h-[600px] overflow-hidden">
@@ -105,15 +103,31 @@ export default function HeroCarousel() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.1 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">{slides[currentIndex].title}</h1>
-              <p className="text-lg md:text-xl mb-8">{slides[currentIndex].description}</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                {slides[currentIndex].title}
+              </h1>
+              <p className="text-lg md:text-xl mb-8">
+                {slides[currentIndex].description}
+              </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-white text-green-800 hover:bg-green-50">
-                  Book an Appointment
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                  Emergency Services
-                </Button>
+                <a
+                  href="https://wa.me/08132815449?text=Hello%20God's%20Knot%20Hospital,%20I%20would%20like%20to%20book%20an%20appointment."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" className="bg-green-600 hover:bg-green-700">
+                    Book Appointment
+                  </Button>
+                </a>
+                <a
+                  href="https://wa.me/08132815449?text=Hello%20God's%20Knot%20Hospital,%20I%20need%20emergency%20assistance."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-green-600 hover:bg-green-700">
+                    Emergency Service
+                  </Button>
+                </a>
               </div>
             </motion.div>
           </div>
@@ -134,5 +148,5 @@ export default function HeroCarousel() {
         ))}
       </div>
     </div>
-  )
+  );
 }
